@@ -25,15 +25,23 @@ app.post('/login', (req, res) => {
   res.send('Data Received: ' + JSON.stringify(data));
 })
 
-app.get('/', async (req, res) => {
+app.get('/', async (req, res) => { 
     fs.readFile('templates/base.html', 'utf8', (err, data) => {
         if (err) {
           console.error(err);
           return;
         }
+        res.send(data);
+    })
+})
 
-        res.send(data)
-        return;
+app.get('/static/css/styles.css', async (req, res) => { 
+    fs.readFile('static/css/styles.css', 'utf8', (err, data) => {
+        if (err) {
+          console.error(err);
+          return;
+        }
+        res.send(data);
     })
 })
 
