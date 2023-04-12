@@ -18,14 +18,13 @@ router.post("/sign-up", async (req, res) => {
 
     try 
     {
-        // Extract email and password from the req.body object
+        // Extract username and password from the req.body object
         const { email, password } = req.body;
         console.log("Input:");
         console.log(req.body);
 
         // Check if the username is already in use
         let userExists = await userDB.findOne({ email: email });
-
         if (userExists) {
             res.status(401).json({ message: "Email is already in use." });
             return;
@@ -41,7 +40,7 @@ router.post("/sign-up", async (req, res) => {
 
             // Create a new user
             let newUser = {
-                username: username,
+                email: email,
                 password: hash,
             };
 
@@ -63,7 +62,7 @@ router.post("/sign-in", async (req, res) => {
     let userDB = client.db("projectdb").collection("users");
 
     try {
-        // Extract email and password from the req.body object
+        // Extract username and password from the req.body object
         const { email, password } = req.body;
         console.log("Input:");
         console.log(req.body);
