@@ -18,15 +18,16 @@ router.post("/sign-up", async (req, res) => {
 
     try 
     {
-        // Extract email and password from the req.body object
-        const { email, password } = req.body;
-        console.log("Input:" + req.body);
+        // Extract username and password from the req.body object
+        const { username, password } = req.body;
+        console.log("Input:");
+        console.log(req.body);
 
-        // Check if the email is already in use
-        let userExists = await userDB.findOne({ email: email });
+        // Check if the username is already in use
+        let userExists = await userDB.findOne({ username: username });
 
         if (userExists) {
-            res.status(401).json({ message: "Email is already in use." });
+            res.status(401).json({ message: "username is already in use." });
             return;
         }
 
@@ -40,7 +41,7 @@ router.post("/sign-up", async (req, res) => {
 
             // Create a new user
             let newUser = {
-                email: email,
+                username: username,
                 password: hash,
             };
 
@@ -62,13 +63,13 @@ router.post("/sign-in", async (req, res) => {
     let userDB = client.db("projectdb").collection("users");
 
     try {
-        // Extract email and password from the req.body object
-        const { email, password } = req.body;
+        // Extract username and password from the req.body object
+        const { username, password } = req.body;
         console.log("Input:");
         console.log(req.body);
 
         // Check if user exists in database
-        let user = await userDB.findOne({ email: email });
+        let user = await userDB.findOne({ username: username });
 
         if (!user) {
             return res.status(401).json({ message: "Invalid Credentials" });
