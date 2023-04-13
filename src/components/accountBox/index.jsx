@@ -4,6 +4,7 @@ import { LoginForm } from "./login";
 import { SignupForm } from "./signup";
 import { motion } from "framer-motion";
 import { AccountContext } from "./accountContext";
+import { ErrorMessage } from "./common";
 
 /* container for the whole section */
 const BoxContainer = styled.div`
@@ -37,7 +38,7 @@ const BackDrop = styled(motion.div)`
     display: flex;
     flex-direction: column;
     border-radius: 50%;
-    transform: rotate(60deg);
+    transform: rotate(60deg); 
     top: -290px;
     left: -70px;
     background: rgb(0,0,0);
@@ -76,6 +77,7 @@ const FormContainer = styled.div`
   flex-direction: column;
   padding: 10px 1.8em;
   text-align: center;
+  margin-bottom: 20px;
 `;
 
 const backdropVariants = {

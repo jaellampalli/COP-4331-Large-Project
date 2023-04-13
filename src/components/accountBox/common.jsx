@@ -15,11 +15,18 @@ export const FormContainer = styled.form`
   flex-direction: column;
 `;
 
-export const AltPrompt = styled.a`
+export const ErrorMessage = styled.span`
+  font-size: 11px;
+  color: red;
+  text-align: left;
+  margin-bottom: 6px;
+  display: none;
+`;
+
+export const AltPrompt = styled.div`
   font-size: 11px;
   color: rgba(200, 200, 200, 1);
   font-weight: 500;
-  text-decoration: none;
 `;
 
 export const ColorLink = styled.a`
@@ -28,6 +35,7 @@ export const ColorLink = styled.a`
   font-weight: bold;
   text-decoration: none;
   margin: 0 4px;
+  cursor: pointer;
 `;
 
 export const Input = styled.input`
@@ -36,7 +44,7 @@ export const Input = styled.input`
   outline: none;
   border: 1px solid rgba(200, 200, 200, 0.3);
   padding: 0px 10px;
-  margin-bottom: 8px;
+  margin-bottom: 5px;
   border-bottom: 1.4px solid transparent;
   box-shadow: 0px 0px 2.5px rgba(15, 15, 15, 0.19);
   transition: all 200ms ease-in-out;
@@ -51,6 +59,9 @@ export const Input = styled.input`
   &:focus {
     outline: none;
     border-bottom: 2px solid black;
+  }
+  &:invalid ~ span {
+    display: block;
   }
 `;
 
