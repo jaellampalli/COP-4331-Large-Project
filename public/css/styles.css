@@ -71,6 +71,21 @@ html {
   text-align: justify;
 }
 
+@keyframes lessonFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;;
+  }
+}
+
+.lesson-fade {
+  opacity: 0;
+  animation: lessonFadeIn 2s ease forwards;
+}
+
+
 @media screen and (max-width: 768px) {
   .lesson {
     padding: 0 3rem; /* Reduce the padding for small screens */
