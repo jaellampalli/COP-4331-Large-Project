@@ -16,10 +16,31 @@ html {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 2s ease forwards;
+}
+
 .card {
+  opacity: 0;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.5s ease;
 }
+
+.card:hover {
+  transform: scale(1.03);
+  z-index: 1;
+}
+
 
 .card-img-top {
   border-top-left-radius: 8px;

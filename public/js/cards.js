@@ -32,10 +32,12 @@ async function fetchLessons() {
     const response = await fetch('/api/lessons');
     const lessonNames = await response.json();
     const container = document.querySelector('.container');
-    for (const lessonName of lessonNames) {
+    
+    for (const [index, lessonName] of lessonNames.entries()) {
       const card = document.createElement('div');
       card.className = 'card my-3 mx-auto';
       card.style.width = '23rem';
+      card.style.animationDelay = `${index * 100}ms`;
       const imgSrc = await getValidImageSrc(lessonName);
       card.innerHTML = `
         <img src="${imgSrc}" class="card-img-top" alt="${lessonName.name}">
@@ -45,9 +47,14 @@ async function fetchLessons() {
         </div>
       `;
       container.appendChild(card);
+
+      setTimeout(() => {
+        card.classList.add('fade-in');
+      }, 0);
     }
   } catch (error) {
     console.error('Error fetching lessons:', error);
   }
 }
+
 fetchLessons();
