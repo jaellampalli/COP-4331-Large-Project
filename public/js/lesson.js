@@ -41,5 +41,23 @@ $(document).ready(function () {
       }
     });
   });
+
+  $('#notesButton').click(function () {
+    const notesArea = $('#notesArea');
+    notesArea.toggleClass('notes-transition');
+  });
+  
+  
+  function fadeIn(element) {
+    element.removeClass('hidden').addClass('visible');
+    element.animate({ opacity: 1 }, 50);
+  }
+  
+  function fadeOut(element) {
+    element.removeClass('visible').addClass('hidden');
+    element.animate({ opacity: 0 }, 50, function () {
+      element.css('pointer-events', 'none');
+    });
+  }
   
 });
