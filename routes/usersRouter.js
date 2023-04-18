@@ -149,7 +149,8 @@ router.post("/edit-info", async (req, res) => {
 
     try {
         // Extract the username, current lesson title, updated marker value and updated notes from the req.body object
-        const { email, title, newMarker, newNotes } = req.body;
+        let { email, title, newMarker, newNotes } = req.body;
+        newMarker = parseInt(newMarker);
         console.log("Input:");
         console.log(req.body);
 
