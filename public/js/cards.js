@@ -58,3 +58,22 @@ async function fetchLessons() {
 }
 
 fetchLessons();
+
+function filterLessons(input) {
+  const cards = document.querySelectorAll('.card');
+  const searchTerm = input.toLowerCase();
+
+  cards.forEach(card => {
+    const title = card.querySelector('.card-title').textContent.toLowerCase();
+    if (title.includes(searchTerm)) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+document.getElementById('searchInput').addEventListener('input', (e) => {
+  filterLessons(e.target.value);
+});
+
