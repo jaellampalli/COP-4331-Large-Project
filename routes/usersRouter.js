@@ -15,7 +15,7 @@ router.post("/sign-up", async (req, res) => {
     console.log("signing up");
     await client.connect();
     let userDB = client.db("projectdb").collection("users");
-    let userInfoDB = client.db("projectdb").collection("userInfo");
+    let lessonsDB = client.db("projectdb").collection("lessons");
 
     try 
     {
@@ -39,7 +39,7 @@ router.post("/sign-up", async (req, res) => {
         {
             if (err) throw new Error("Internal Server Error");
             // Creates a new document with all markers and notes associated to an email
-            let newUserInfo = {
+            let lessonInfo = {
                 email: email,
                 bubblesort_mark: 0,
                 mergesort_mark: 0,
@@ -69,7 +69,7 @@ router.post("/sign-up", async (req, res) => {
             };
             // Save user and the user's info to the database
             userDB.insertOne(newUser);
-            userInfoDB.insertOne(newUserInfo);
+            lessonsDB.insertOne(lessonInfo);
             console.log("Added new user")
             return res.status(200).json({ message: "New account added" });
         });
@@ -118,7 +118,7 @@ router.post("/sign-in", async (req, res) => {
 router.post("/retrieve-info", async (req, res) => {
     console.log("retrieving info");
     await client.connect();
-    let userInfoDB = client.db("projectdb").collection("userInfo");
+    let lessonsDB = client.db("projectdb").collection("lessons");
 
     try {
         // Extract username from the req.body object
@@ -127,7 +127,7 @@ router.post("/retrieve-info", async (req, res) => {
         console.log(req.body);
 
         // Check if user exists in database
-        let userInfo = await userInfoDB.findOne({ email: email });
+        let userInfo = await lessonsDB.findOne({ email: email });
 
         if (!userInfo) {
             return res.status(401).json({ message: "No User Data Found" });
@@ -145,7 +145,7 @@ router.post("/retrieve-info", async (req, res) => {
 router.post("/edit-info", async (req, res) => {
     console.log("editing info");
     await client.connect();
-    let userInfoDB = client.db("projectdb").collection("userInfo");
+    let lessonsDB = client.db("projectdb").collection("lessons");
 
     try {
         // Extract the username, current lesson title, updated marker value and updated notes from the req.body object
@@ -158,15 +158,15 @@ router.post("/edit-info", async (req, res) => {
         var titleMarker = title + "_mark";
         var titleNotes = title + "_notes";
         // Check if user exists in database
-        let userInfo = await userInfoDB.findOne({ email: email });
+        let lessonInfo = await lessonsDB.findOne({ email: email });
 
-        if (!userInfo) {
+        if (!lessonInfo) {
             return res.status(401).json({ message: "No User Data Found" });
         }
 
         // Update the specific fields for the user's information in the database
         var newValues = { $set: { [titleMarker]: newMarker, [titleNotes]: newNotes } };
-        await userInfoDB.updateOne(userInfo, newValues, function(err, res) {
+        await lessonsDB.updateOne(lessonInfo, newValues, function(err, res) {
           if (err) throw new Error("Updating data error");
         });
         
