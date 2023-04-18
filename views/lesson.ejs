@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <title><%= lessonName %></title>
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <div class="lesson lesson-fade mt-4">
+    <div class="d-flex justify-content-between">
+      <h1><%= lessonName %></h1>
+      <button class="btn btn-primary" id="editButton">Edit</button>
+    </div>
+    <hr>
+    <div id="lessonContent">
+    </div>
+  </div>
+
+  <div id="editContent" class="lesson" style="display: none;">
+    <form id="editForm" action="/lessons/<%= encodeURIComponent(lessonName) %>/save" method="POST" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="editTextarea">Edit Lesson Content:</label>
+        <textarea class="form-control" id="editTextarea" name="content" rows="15"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="image">Upload Image:</label>
+        <input type="file" class="form-control-file" id="image" name="image" accept="image/png">
+      </div>
+      <button type="submit" class="btn btn-primary">Save</button>
+      <button type="button" class="btn btn-secondary" id="cancelButton">Cancel</button>
+    </form>
+  </div>
+  <button class="btn btn-secondary floating-notes-button" id="notesButton">Notes</button>
+  <div id="notesArea" class="notes-area">
+    <textarea class="form-control notes-textarea" id="notesTextarea" rows="10" placeholder="Type your notes here..."></textarea>
+  </div>  
+  
+
+  <%- include('partials/footer') %>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    const lessonName = '<%= lessonName %>';
+  </script>
+  <script src="/js/lesson.js%>"></script>
+</body>
+</html>
