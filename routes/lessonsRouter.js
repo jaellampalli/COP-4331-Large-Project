@@ -10,6 +10,7 @@ async function main()
 }
 main().catch(console.error);
 
+// Takes in email and the title of the lesson, and returns either an error stating no data found or an object with a specifc user lesson data.
 router.post("/retrieve-lesson", async (req, res) => {
     console.log("retrieving lesson");
     await client.connect();
@@ -40,6 +41,7 @@ router.post("/retrieve-lesson", async (req, res) => {
     }
 });
 
+// Takes in email, and returns either an error stating no data found or an object with all the user's lesson data.
 router.post("/retrieve-all-lessons", async (req, res) => {
     console.log("retrieving all lessons");
     await client.connect();
@@ -67,6 +69,7 @@ router.post("/retrieve-all-lessons", async (req, res) => {
     }
 });
 
+// Takes in the email, title of the lesson, the new marker value, and the new notes, and returns either an error or a confirmation that the user's information has been updated.
 router.post("/edit-user-lesson", async (req, res) => {
     console.log("editing user's lesson data");
     await client.connect();
