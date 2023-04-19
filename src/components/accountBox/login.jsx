@@ -14,9 +14,53 @@ export function LoginForm(props) {
     
     const { switchToSignup } = useContext(AccountContext);
 
+    function doLogin()
+    {
+        if (!email)
+        {
+            console.error("Enter email");
+            return;
+        }
+        
+        if (!password)
+        {
+            console.error("Enter password");
+            return;
+        }
+        
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+    
+        var urlencoded = new URLSearchParams();
+        urlencoded.append("email", email);
+        urlencoded.append("password", password);
+    
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: urlencoded,
+            redirect: 'follow'
+        };
+
+        fetch("http://localhost:5000/users/sign-in", requestOptions)
+        .then(response => response.text())
+        .then(result => {
+            result = JSON.parse(result);
+            console.log(result)
+            if (result.error)
+            {
+                return;
+            }
+            window.location.href = "/lessons";
+        })
+        .catch(error => console.log('error', error));
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        window.location.href = "/lessons";
+        doLogin();
+
+        //window.location.href = "/lessons";
     }
 
     return (<BoxContainer>

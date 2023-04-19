@@ -49,9 +49,64 @@ export function SignupForm(props) {
         }
     ]
 
+    function doSignup()
+    {
+        if (!values.email)
+        {
+            console.error("Enter email");
+            return;
+        }
+        
+        if (!values.initPass)
+        {
+            console.error("Enter password");
+            return;
+        }
+
+        if (!values.password)
+        {
+            console.error("Enter confirm");
+            return;
+        }
+
+        if (values.initPass != values.password)
+        {
+            console.error("Passwords do not match");
+            return;
+        }
+        
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+    
+        var urlencoded = new URLSearchParams();
+        urlencoded.append("email", values.email);
+        urlencoded.append("password", values.password);
+    
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: urlencoded,
+            redirect: 'follow'
+        };
+
+        fetch("http://localhost:5000/users/sign-up", requestOptions)
+        .then(response => response.text())
+        .then(result => {
+            result = JSON.parse(result);
+            console.log(result)
+            if (result.error)
+            {
+                return;
+            }
+            
+        })
+        .catch(error => console.log('error', error));
+    }
+
     // supplementary functions to help with getting inputs
     const handleSubmit = (e) => {
         e.preventDefault();
+        doSignup();
     }
 
     const onChange = (e) => {
