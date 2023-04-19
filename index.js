@@ -7,6 +7,8 @@ const bodyParser = require("body-parser");
 const { MongoClient } = require('mongodb');
 require('dotenv').config();
 const usersRouter = require("./routes/usersRouter");
+const lessonsRouter = require("./routes/lessonsRouter");
+
 let client;
 
 app.use(bodyParser.json());
@@ -77,6 +79,8 @@ app.get('/updatelesson', (req, res) => {
 })
 
 app.use("/users", usersRouter);
+app.use("/lessons", lessonsRouter);
+
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
