@@ -11,6 +11,7 @@ async function main()
 }
 main().catch(console.error);
 
+// Takes in email and password and returns error message or a confirmation for a new user.
 router.post("/sign-up", async (req, res) => {
     console.log("signing up");
     await client.connect();
@@ -81,6 +82,7 @@ router.post("/sign-up", async (req, res) => {
     }
 });
 
+// Takes in email and password and returns an error message, a sign in confirmation, or a message stating invalid credentials.
 router.post("/sign-in", async (req, res) => {
     console.log("signing in");
     await client.connect();
@@ -111,6 +113,34 @@ router.post("/sign-in", async (req, res) => {
             console.log(err);
             return res.status(401).json({ message: "Invalid Credentials" });
         });
+    } catch (error) {
+        res.status(401).send(error.message);
+    }
+});
+
+// Takes in email and returns either an error message or a boolean stating whether or not the account is an administrator.
+router.post("/check-admin", async (req, res) => {
+    console.log("verifying if administrator");
+    await client.connect();
+    let userDB = client.db("projectdb").collection("users");
+
+    try {
+        // Extract username from the req.body object
+        const { email } = req.body;
+        console.log("Input:");
+        console.log(req.body);
+
+        // Check if user exists in database
+        let user =  await userDB.findOne({"email": email}, {projection : {"isAdmin": 1, "_id":0}});
+        if (!user) {
+            return res.status(401).json({ message: "Invalid Credentials" });
+        }
+
+        console.log("User Administrator Status:");
+        console.log(user);
+
+        return res.status(200).json(user);
+
     } catch (error) {
         res.status(401).send(error.message);
     }
