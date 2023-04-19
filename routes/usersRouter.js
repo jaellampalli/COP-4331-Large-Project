@@ -66,6 +66,7 @@ router.post("/sign-up", async (req, res) => {
             let newUser = {
                 email: email,
                 password: hash,
+                isAdmin: false
             };
             // Save user and the user's info to the database
             userDB.insertOne(newUser);
