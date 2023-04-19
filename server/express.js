@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const fs = require('fs');
@@ -7,8 +8,11 @@ const multer = require('multer');
 const MarkdownIt = require('markdown-it');
 const md = new MarkdownIt();
 const { MongoClient } = require('mongodb');
+
+const usersRouter = require("./routes/usersRouter");
+
 const app = express();
-const port = process.env.PORT || 3000;
+const port = 5000;
 
 // Configuration
 require('dotenv').config();
@@ -39,7 +43,7 @@ const upload = multer({ storage: storage });
 /* ========================================================================== */
 
 app.get('/', async (req, res) => {
-  res.render('index');
+    res.render('index');
 });
 
 app.post('/search', async (req, res) => {
@@ -168,5 +172,4 @@ app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
 
-
-
+app.use("/users", usersRouter);
