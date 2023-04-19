@@ -74,9 +74,9 @@ router.post("/sign-up", async (req, res) => {
             return res.status(200).json({ message: "New account added" });
         });
     } 
-    catch (err) 
+    catch (error) 
     {
-        return res.status(401).send(err.message);
+        return res.status(401).send(error.message);
     }
 });
 
@@ -111,68 +111,7 @@ router.post("/sign-in", async (req, res) => {
             return res.status(401).json({ message: "Invalid Credentials" });
         });
     } catch (error) {
-        res.status(401).send(err.message);
-    }
-});
-
-router.post("/retrieve-info", async (req, res) => {
-    console.log("retrieving info");
-    await client.connect();
-    let lessonsDB = client.db("projectdb").collection("lessons");
-
-    try {
-        // Extract username from the req.body object
-        const { email } = req.body;
-        console.log("Input:");
-        console.log(req.body);
-
-        // Check if user exists in database
-        let userInfo = await lessonsDB.findOne({ email: email });
-
-        if (!userInfo) {
-            return res.status(401).json({ message: "No User Data Found" });
-        }
-
-        console.log("Found user:");
-        console.log(userInfo);
-        // If found return all of the user's information (notes and markers)
-        return res.status(200).json(userInfo);
-    } catch (error) {
-        res.status(401).send(err.message);
-    }
-});
-
-router.post("/edit-info", async (req, res) => {
-    console.log("editing info");
-    await client.connect();
-    let lessonsDB = client.db("projectdb").collection("lessons");
-
-    try {
-        // Extract the username, current lesson title, updated marker value and updated notes from the req.body object
-        let { email, title, newMarker, newNotes } = req.body;
-        newMarker = parseInt(newMarker);
-        console.log("Input:");
-        console.log(req.body);
-
-        // Create two strings using the title for the fields to update
-        var titleMarker = title + "_mark";
-        var titleNotes = title + "_notes";
-        // Check if user exists in database
-        let lessonInfo = await lessonsDB.findOne({ email: email });
-
-        if (!lessonInfo) {
-            return res.status(401).json({ message: "No User Data Found" });
-        }
-
-        // Update the specific fields for the user's information in the database
-        var newValues = { $set: { [titleMarker]: newMarker, [titleNotes]: newNotes } };
-        await lessonsDB.updateOne(lessonInfo, newValues, function(err, res) {
-          if (err) throw new Error("Updating data error");
-        });
-        
-        return res.status(200).json({ message: "Updated Successfully" });
-    } catch (error) {
-        res.status(401).send(err.message);
+        res.status(401).send(error.message);
     }
 });
 
