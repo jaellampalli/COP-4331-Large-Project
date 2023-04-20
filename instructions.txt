@@ -1,8 +1,0 @@
-To install the required modules, run "npm install" in the main folder
-Place the ".env" in the server folder. It should have the MONGO_URI variable. 
-
-Open a terminal to the /server folder
-node express.js
-
-Open a second terminal to the main folder
-npm start
