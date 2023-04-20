@@ -8,6 +8,7 @@ const multer = require('multer');
 const MarkdownIt = require('markdown-it');
 const md = new MarkdownIt();
 const { MongoClient } = require('mongodb');
+const cors = require('cors');
 
 const usersRouter = require("./routes/usersRouter");
 
@@ -16,15 +17,13 @@ const port = 5000;
 
 // Configuration
 require('dotenv').config();
+app.use(cors({ origin: true }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/lessons', express.static(path.join(__dirname, 'lessons')));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
-
-// Connect to MongoDB
-// mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Multer config for image uploads
 const storage = multer.diskStorage({

@@ -27,7 +27,7 @@ router.post("/sign-up", async (req, res) => {
         // Check if the username is already in use
         let userExists = await userDB.findOne({ email: email });
         if (userExists) {
-            res.status(401).json({ message: "Email is already in use." });
+            res.status(401).json({ error: "Email is already in use." });
             return;
         }
 
@@ -95,7 +95,7 @@ router.post("/sign-in", async (req, res) => {
         let user = await userDB.findOne({ email: email });
 
         if (!user) {
-            return res.status(401).json({ message: "Invalid Credentials" });
+            return res.status(401).json({ error: "Invalid Credentials" });
         }
 
         console.log("Found user:");
@@ -108,10 +108,10 @@ router.post("/sign-in", async (req, res) => {
             }
 
             console.log(err);
-            return res.status(401).json({ message: "Invalid Credentials" });
+            return res.status(401).json({ error: "Invalid Credentials" });
         });
     } catch (error) {
-        res.status(401).send(err.message);
+        res.status(401).send({ error: err.message });
     }
 });
 
@@ -130,7 +130,7 @@ router.post("/retrieve-info", async (req, res) => {
         let userInfo = await userInfoDB.findOne({ email: email });
 
         if (!userInfo) {
-            return res.status(401).json({ message: "No User Data Found" });
+            return res.status(401).json({ error: "No User Data Found" });
         }
 
         console.log("Found user:");
@@ -160,7 +160,7 @@ router.post("/edit-info", async (req, res) => {
         let userInfo = await userInfoDB.findOne({ email: email });
 
         if (!userInfo) {
-            return res.status(401).json({ message: "No User Data Found" });
+            return res.status(401).json({ error: "No User Data Found" });
         }
 
         // Update the specific fields for the user's information in the database
@@ -171,7 +171,7 @@ router.post("/edit-info", async (req, res) => {
         
         return res.status(200).json({ message: "Updated Successfully" });
     } catch (error) {
-        res.status(401).send(err.message);
+        res.status(401).send({ error: err.message });
     }
 });
 

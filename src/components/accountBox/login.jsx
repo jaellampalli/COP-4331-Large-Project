@@ -51,6 +51,7 @@ export function LoginForm(props) {
             {
                 return;
             }
+            localStorage.setItem("Login", email);
             window.location.href = "/lessons";
         })
         .catch(error => console.log('error', error));

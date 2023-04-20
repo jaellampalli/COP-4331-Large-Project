@@ -77,3 +77,8 @@ document.getElementById('searchInput').addEventListener('input', (e) => {
   filterLessons(e.target.value);
 });
 
+// add an event listener to run when a message is received
+window.addEventListener("message", ({ data, source }) => {
+  console.log("Express recieved data:");
+  console.log(data);
+});
