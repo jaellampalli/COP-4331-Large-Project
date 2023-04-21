@@ -9,6 +9,7 @@ import { useContext, useState } from 'react';
 import FormInput from "./signupInputs";
 
 export function SignupForm(props) {
+    
     // used to switch screens
     const { switchToLogin } = useContext(AccountContext);
 
@@ -27,7 +28,6 @@ export function SignupForm(props) {
             placeholder: "Email",
             pattern: "^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$",
             errMsg: "Invalid email",
-            required: true,
         },
         {
             id: "initPassField",
@@ -36,7 +36,6 @@ export function SignupForm(props) {
             placeholder: "Password",
             pattern: "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,15}$",
             errMsg: "Must contain 8-15 characters and at least one uppercase, lowercase, and digit",
-            required: true,
         },
         {
             id: "confirmPassField",
@@ -45,7 +44,6 @@ export function SignupForm(props) {
             placeholder: "Confirm password",
             pattern: values.initPass,
             errMsg: "Passwords do not match!",
-            required: true,
         }
     ]
 
@@ -68,7 +66,7 @@ export function SignupForm(props) {
                     onChange={onChange} />
                 ))}
             </FormContainer>
-            <SubmitButton onClick={handleSubmit} type="submit">Signup</SubmitButton>
+            <SubmitButton onClick={handleSubmit} type="submit">Sign up</SubmitButton>
             <AltPrompt href="#">Already have an account?<ColorLink onClick={switchToLogin}>Sign in!</ColorLink></AltPrompt>
         </BoxContainer>
     );
