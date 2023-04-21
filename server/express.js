@@ -11,6 +11,7 @@ const { MongoClient } = require('mongodb');
 const cors = require('cors');
 
 const usersRouter = require("./routes/usersRouter");
+const lessonsRouter = require("./routes/lessonsRouter");
 
 const app = express();
 const port = 5000;
@@ -172,3 +173,4 @@ app.listen(port, () => {
 });
 
 app.use("/users", usersRouter);
+app.use("/lessons", lessonsRouter);
