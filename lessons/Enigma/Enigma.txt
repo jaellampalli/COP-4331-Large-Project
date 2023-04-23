@@ -30,6 +30,6 @@ There are many reasons why you might choose Enigma over other encryption algorit
 - **Flexibility**: Enigma can be adapted for use in a wide range of applications, from military communications to personal messaging apps.
 - **Privacy**: Enigma ensures that only authorized users can decrypt your messages, protecting your privacy and sensitive information.
 
-#### Conclusion
+#### Conclusion:
 
 If you're looking for a powerful and secure encryption algorithm that can keep your data safe, Enigma is the way to go. With its unique combination of substitution and transposition techniques, Enigma is revolutionizing the field of cybersecurity and ensuring that sensitive information stays private. Try it out for yourself and see the results! 
