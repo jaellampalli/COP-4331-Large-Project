@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const fs = require('fs');
@@ -7,20 +8,23 @@ const multer = require('multer');
 const MarkdownIt = require('markdown-it');
 const md = new MarkdownIt();
 const { MongoClient } = require('mongodb');
+const cors = require('cors');
+
+const usersRouter = require("./routes/usersRouter");
+const lessonsRouter = require("./routes/lessonsRouter");
+
 const app = express();
-const port = process.env.PORT || 3000;
+const port = 5000;
 
 // Configuration
 require('dotenv').config();
+app.use(cors({ origin: true }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/lessons', express.static(path.join(__dirname, 'lessons')));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
-
-// Connect to MongoDB
-// mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Multer config for image uploads
 const storage = multer.diskStorage({
@@ -39,7 +43,7 @@ const upload = multer({ storage: storage });
 /* ========================================================================== */
 
 app.get('/', async (req, res) => {
-  res.render('index');
+    res.render('index');
 });
 
 app.post('/search', async (req, res) => {
@@ -168,5 +172,5 @@ app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
 
-
-
+app.use("/users", usersRouter);
+app.use("/lessons", lessonsRouter);
