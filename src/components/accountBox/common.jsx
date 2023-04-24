@@ -2,7 +2,7 @@
 import styled from "styled-components";
 
 export const BoxContainer = styled.div`
-  width: 100%
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,6 +13,12 @@ export const FormContainer = styled.form`
   width: 100%;
   display: flex;
   flex-direction: column;
+`;
+
+export const Label = styled.label`
+  font-size: 11px;
+  color: black;
+  text-align: left;
 `;
 
 export const ErrorMessage = styled.span`
@@ -27,6 +33,7 @@ export const AltPrompt = styled.div`
   font-size: 11px;
   color: rgba(200, 200, 200, 1);
   font-weight: 500;
+  margin-bottom: 10px;
 `;
 
 export const ColorLink = styled.a`
@@ -34,7 +41,7 @@ export const ColorLink = styled.a`
   color: #2cb2ff;
   font-weight: bold;
   text-decoration: none;
-  margin: 0 4px;
+  margin: 0 10px;
   cursor: pointer;
 `;
 
@@ -44,12 +51,11 @@ export const Input = styled.input`
   outline: none;
   border: 1px solid rgba(200, 200, 200, 0.3);
   padding: 0px 10px;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
   border-bottom: 1.4px solid transparent;
   box-shadow: 0px 0px 2.5px rgba(15, 15, 15, 0.19);
   transition: all 200ms ease-in-out;
   font-size: 12px;
-
   &::placeholder {
     color: rgba(200, 200, 200, 1);
   }
@@ -63,23 +69,27 @@ export const Input = styled.input`
   &:invalid ~ span {
     display: block;
   }
+  &:invalid {
+    border-bottom: 2px solid red;
+  }
 `;
 
 export const SubmitButton = styled.button`
   width: 100%;
-  padding: 11px 40%;
-  margin-top: 25px;
+  padding: 12px 25px;
+  margin-top: 15px;
   margin-bottom: 8px;
   color: #fff;
   font-size: 15px;
   font-weight: 600;
-  border: none;
   border-radius: 100px;
   cursor: pointer;
   transition: all, 240ms ease-in-out;
   background: rgb(241, 196, 15);
   background: linear-gradient(180deg, rgba(0,0,0,1) 70%, rgba(60,57,57,1) 100%);
+  
   &:hover {
     filter: brightness(1.03);
+    transform: scale(1.01);
   }
 `;

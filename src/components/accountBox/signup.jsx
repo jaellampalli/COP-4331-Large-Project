@@ -123,7 +123,7 @@ export function SignupForm(props) {
                     onChange={onChange} />
                 ))}
             </FormContainer>
-            <SubmitButton onClick={handleSubmit} type="submit">Signup</SubmitButton>
+            <SubmitButton onClick={handleSubmit} type="submit">Sign up</SubmitButton>
             <AltPrompt href="#">Already have an account?<ColorLink onClick={switchToLogin}>Sign in!</ColorLink></AltPrompt>
         </BoxContainer>
     );

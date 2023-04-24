@@ -28,6 +28,7 @@ export function LoginForm(props) {
             return;
         }
         
+        // Send API request
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
     
@@ -46,11 +47,15 @@ export function LoginForm(props) {
         .then(response => response.text())
         .then(result => {
             result = JSON.parse(result);
-            console.log(result)
+            console.log(result);
+
+            // Displays any errors
             if (result.error)
             {
                 return;
             }
+
+            // If login was valid, save login and go to lessons page
             localStorage.setItem("Login", email);
             window.location.href = "/lessons";
         })
@@ -60,8 +65,6 @@ export function LoginForm(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
         doLogin();
-
-        //window.location.href = "/lessons";
     }
 
     return (<BoxContainer>
@@ -69,7 +72,6 @@ export function LoginForm(props) {
             <Input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email" />
             <Input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password" />
         </FormContainer>
-        <AltPrompt href="#">Forgot password?</AltPrompt>
         <SubmitButton onClick={handleSubmit} type="submit">Login</SubmitButton>
         <AltPrompt href="#">Don't have an account?<ColorLink onClick={switchToSignup}>Sign up!</ColorLink></AltPrompt>
     </BoxContainer>);

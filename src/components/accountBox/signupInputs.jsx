@@ -7,7 +7,7 @@ const FormInput = (props) => {
     return (
         <div className="form-group">
             <Input {...inputProps}
-              onChange={onChange}/>
+              onChange={onChange} />
             <ErrorMessage>{errMsg}</ErrorMessage>
         </div>
     );

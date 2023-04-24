@@ -17,6 +17,7 @@ const BoxContainer = styled.div`
     box-shadow: 0 0 2px rgba(15, 15, 15, 0.28);
     position: relative;
     overflow: hidden;
+    background-color: #f5f5f5;
 `;
 
 /* container for the top area of the app */
@@ -37,10 +38,10 @@ const BackDrop = styled(motion.div)`
     position: absolute;
     display: flex;
     flex-direction: column;
-    border-radius: 50%;
-    transform: rotate(60deg); 
+    border-radius: 100%;
+    transform: rotate(30deg); 
     top: -290px;
-    left: -70px;
+    left: -60px;
     background: rgb(0,0,0);
     background: linear-gradient(25deg, rgba(0,0,0,1) 35%, rgba(60,57,57,1) 100%);
 `;
@@ -49,7 +50,7 @@ const HeaderContainer = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding-bottom: 30px;
+    padding-bottom: 40px;
 `;
 
 const HeaderText = styled.h2`
@@ -77,21 +78,21 @@ const FormContainer = styled.div`
   flex-direction: column;
   padding: 10px 1.8em;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 `;
 
 const backdropVariants = {
     expanded: {
         width: "233%",
-        height: "1050px",
-        borderRadius: "20%",
-        transform: "rotate(60deg)"
+        height: "1090px",
+        borderRadius: "100%",
+        transform: "rotate(800deg)"
     },
     collapsed: {
         width: "160%",
         height: "550px",
-        borderRadius: "50%",
-        transform: "rotate(60deg)",
+        borderRadius: "100%",
+        transform: "rotate(800deg)",
     },
 };
 
@@ -141,13 +142,13 @@ export function AccountBox(props){
                     {active === "login" && (
                         <HeaderContainer>
                             <HeaderText>Welcome</HeaderText>
-                            <SmallText>Please sign-in to continue</SmallText>
+                            <SmallText>Please login to continue</SmallText>
                         </HeaderContainer>
                     )}
                     {active === "signup" && (
                         <HeaderContainer>
                             <HeaderText>Create Account</HeaderText>
-                            <SmallText>Please sign-up to continue</SmallText>
+                            <SmallText>Please sign up to continue</SmallText>
                         </HeaderContainer>
                     )}
                 </TopContainer>
