@@ -106,8 +106,11 @@ $(document).ready(function () {
     });
   }
   
-  function setup()
+  async function setup()
   {
+    let isAdmin = await checkAdmin();
+    document.getElementById("editButton").hidden = !isAdmin;
+
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
@@ -139,6 +142,33 @@ $(document).ready(function () {
         }
       })
       .catch(error => console.log('error', error));
+  }
+
+  function checkAdmin()
+  {
+    return new Promise(function (resolve, reject) {
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+      var urlencoded = new URLSearchParams();
+      urlencoded.append("email", email);
+
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: urlencoded,
+        redirect: 'follow'
+      };
+
+      fetch("http://localhost:5000/users/check-admin", requestOptions)
+        .then(response => response.text())
+        .then(result => {
+          result = JSON.parse(result);
+          console.log("isAdmin: " + result.isAdmin);
+          resolve(result.isAdmin);
+        })
+        .catch(error => reject(error));
+    })
   }
 
     // add an event listener to run when a message is received

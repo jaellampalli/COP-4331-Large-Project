@@ -49,9 +49,10 @@ export function LoginForm(props) {
             result = JSON.parse(result);
             console.log(result);
 
-            // Displays any errors
-            if (result.error)
+            // Give error if login was invalid
+            if (result.message == "Invalid Credentials")
             {
+                // Add code to display error message here
                 return;
             }
 

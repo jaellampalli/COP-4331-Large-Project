@@ -11,11 +11,12 @@ async function main()
 }
 main().catch(console.error);
 
+// Takes in email and password and returns error message or a confirmation for a new user.
 router.post("/sign-up", async (req, res) => {
     console.log("signing up");
     await client.connect();
     let userDB = client.db("projectdb").collection("users");
-    let userInfoDB = client.db("projectdb").collection("userInfo");
+    let lessonsDB = client.db("projectdb").collection("lessons");
 
     try 
     {
@@ -27,7 +28,7 @@ router.post("/sign-up", async (req, res) => {
         // Check if the username is already in use
         let userExists = await userDB.findOne({ email: email });
         if (userExists) {
-            res.status(401).json({ error: "Email is already in use." });
+            res.status(401).json({ message: "Email is already in use." });
             return;
         }
 
@@ -39,7 +40,7 @@ router.post("/sign-up", async (req, res) => {
         {
             if (err) throw new Error("Internal Server Error");
             // Creates a new document with all markers and notes associated to an email
-            let newUserInfo = {
+            let lessonInfo = {
                 email: email,
                 bubblesort_mark: 0,
                 mergesort_mark: 0,
@@ -66,20 +67,22 @@ router.post("/sign-up", async (req, res) => {
             let newUser = {
                 email: email,
                 password: hash,
+                isAdmin: false
             };
             // Save user and the user's info to the database
             userDB.insertOne(newUser);
-            userInfoDB.insertOne(newUserInfo);
+            lessonsDB.insertOne(lessonInfo);
             console.log("Added new user")
             return res.status(200).json({ message: "New account added" });
         });
     } 
-    catch (err) 
+    catch (error) 
     {
-        return res.status(401).send(err.message);
+        return res.status(401).send(error.message);
     }
 });
 
+// Takes in email and password and returns an error message, a sign in confirmation, or a message stating invalid credentials.
 router.post("/sign-in", async (req, res) => {
     console.log("signing in");
     await client.connect();
@@ -95,7 +98,7 @@ router.post("/sign-in", async (req, res) => {
         let user = await userDB.findOne({ email: email });
 
         if (!user) {
-            return res.status(401).json({ error: "Invalid Credentials" });
+            return res.status(401).json({ message: "Invalid Credentials" });
         }
 
         console.log("Found user:");
@@ -108,17 +111,18 @@ router.post("/sign-in", async (req, res) => {
             }
 
             console.log(err);
-            return res.status(401).json({ error: "Invalid Credentials" });
+            return res.status(401).json({ message: "Invalid Credentials" });
         });
     } catch (error) {
-        res.status(401).send({ error: err.message });
+        res.status(401).send(error.message);
     }
 });
 
-router.post("/retrieve-info", async (req, res) => {
-    console.log("retrieving info");
+// Takes in email and returns either an error message or a boolean stating whether or not the account is an administrator.
+router.post("/check-admin", async (req, res) => {
+    console.log("verifying if administrator");
     await client.connect();
-    let userInfoDB = client.db("projectdb").collection("userInfo");
+    let userDB = client.db("projectdb").collection("users");
 
     try {
         // Extract username from the req.body object
@@ -127,51 +131,18 @@ router.post("/retrieve-info", async (req, res) => {
         console.log(req.body);
 
         // Check if user exists in database
-        let userInfo = await userInfoDB.findOne({ email: email });
-
-        if (!userInfo) {
-            return res.status(401).json({ error: "No User Data Found" });
+        let user =  await userDB.findOne({"email": email}, {projection : {"isAdmin": 1, "_id":0}});
+        if (!user) {
+            return res.status(401).json({ message: "Invalid Credentials" });
         }
 
-        console.log("Found user:");
-        console.log(userInfo);
-        // If found return all of the user's information (notes and markers)
-        return res.status(200).json(userInfo);
+        console.log("User Administrator Status:");
+        console.log(user);
+
+        return res.status(200).json(user);
+
     } catch (error) {
-        res.status(401).send(err.message);
-    }
-});
-
-router.post("/edit-info", async (req, res) => {
-    console.log("editing info");
-    await client.connect();
-    let userInfoDB = client.db("projectdb").collection("userInfo");
-
-    try {
-        // Extract the username, current lesson title, updated marker value and updated notes from the req.body object
-        const { email, title, newMarker, newNotes } = req.body;
-        console.log("Input:");
-        console.log(req.body);
-
-        // Create two strings using the title for the fields to update
-        var titleMarker = title + "_mark";
-        var titleNotes = title + "_notes";
-        // Check if user exists in database
-        let userInfo = await userInfoDB.findOne({ email: email });
-
-        if (!userInfo) {
-            return res.status(401).json({ error: "No User Data Found" });
-        }
-
-        // Update the specific fields for the user's information in the database
-        var newValues = { $set: { [titleMarker]: newMarker, [titleNotes]: newNotes } };
-        await userInfoDB.updateOne(userInfo, newValues, function(err, res) {
-          if (err) throw new Error("Updating data error");
-        });
-        
-        return res.status(200).json({ message: "Updated Successfully" });
-    } catch (error) {
-        res.status(401).send({ error: err.message });
+        res.status(401).send(error.message);
     }
 });
 
