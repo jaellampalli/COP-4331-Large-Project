@@ -64,21 +64,23 @@ After soring the tens place, the final array is [01, 121, 23, 432, 45, 564, 788]
 After sorting the hundreds place, the final array is [001, 023, 045, 121, 432, 564, 788] and done sorting.
 
 ### Analysis 
-#### Time complexity: O(m * (n + k)) The time complexity is O(m *
-(n + k)) where “m” is the maximum number of digits, “n” is the number of
-elements to be sorted and “k” is the number of possible values for each digit.
-The sorting is done by starting from the least significant to the most
-significant digit, in each iteration the radix sort algorithm iterates through
-all “n” elements of the input array resulting in O(n). As it iterates through
-each digit of the array, it performs the digit based bucketing process for “m”
-times, resulting in O(m * n). Finally, the radix sort algorithm iterates
-through each bucket for the retrieval of sorted numbers resulting in O(k),
-overall complexity resulting in O(m * (n + k)).
+#### Time complexity: O(m * (n + k)) 
 
-####Space complexity:O(n + k) The space complexity for the radix sort is O(n +
-k), where “n” is the number of elements and “k” is the number of possible
-values of each digit. The radix sort algorithm uses temporary arrays for
-storing the elements in each bucket. The number of buckets is usually equal to
-the number of possible values for each digit. The radix sort algorithm
-maintains a copy of the input array and a copy of the output array, overall
-complexity resulting in O(n + k).
+The time complexity is O(m * (n + k)) where “m” is the maximum number of
+digits, “n” is the number of elements to be sorted and “k” is the number of
+possible values for each digit. The sorting is done by starting from the least
+significant to the most significant digit, in each iteration the radix sort
+algorithm iterates through all “n” elements of the input array resulting in
+O(n). As it iterates through each digit of the array, it performs the digit
+based bucketing process for “m” times, resulting in O(m * n). Finally, the
+radix sort algorithm iterates through each bucket for the retrieval of sorted
+numbers resulting in O(k), overall complexity resulting in O(m * (n + k)).
+
+#### Space complexity:O(n + k) 
+
+The space complexity for the radix sort is O(n + k), where “n” is the number of
+elements and “k” is the number of possible values of each digit. The radix sort
+algorithm uses temporary arrays for storing the elements in each bucket. The
+number of buckets is usually equal to the number of possible values for each
+digit. The radix sort algorithm maintains a copy of the input array and a copy
+of the output array, overall complexity resulting in O(n + k).
