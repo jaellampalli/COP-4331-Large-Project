@@ -85,7 +85,7 @@ const FormContainer = styled.div`
 const backdropVariants = {
     expanded: {
         width: "233%",
-        height: "1090px",
+        height: "1125px",
         borderRadius: "100%",
         transform: "rotate(800deg)"
     },
