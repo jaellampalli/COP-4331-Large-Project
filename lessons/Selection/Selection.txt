@@ -1,3 +1,69 @@
+### How it works: 
+
+The selection sort algorithm works by repeatedly selecting either the smallest
+or the largest element from the unsorted portion of the list and swapping it
+into the sorted portion of the list. This algorithm maintains two portions of
+the array: 
+
+- The subarray that is sorted 
+- The remaining subarray that is unsorted
+
+Subsequently after every iteration the smallest / largest element from the
+unsorted subarray is picked and moved to the beginning of the unsorted
+subarray. Therefore after every iteration the size of the sorted subarray
+increases by one and the size of the unsorted subarray decreases by one. Upon
+the completion of the Nth iteration (the size of the array) the sorted array is
+achieved.
+
+### Example
+
+Let us consider the following array: [64, 25, 12, 22, 11]
+
+#### First Pass
+
+Traversing the whole array from (i = 0) sequentially. After traversing through the array we observe that the 11 is the lowest value. Therefore we swap 64 with 11.
+
+[64, 25, 12, 22, 11] → [11, 25, 12, 22, 64]
+
+#### Second Pass
+
+For the second pass, start traversing from the index position (i = 1) in a sequential manner. Upon traversing we find that the 12 is the least element. Hence we swap 12 with 25.
+
+[11, 25, 12, 22, 64] → [11, 12, 25, 22, 64]
+
+#### Third Pass
+
+For the third pass, start traversing from the index position (i = 2) in a sequential manner. Upon traversing we find that the 22 is the smallest element and hence we 22 with 25.
+
+[11, 12, 25, 22, 64] → [11, 12, 22, 25, 64]
+
+#### Fourth Pass
+
+For the fourth pass, start traversing from the index positon (i = 3) in a sequential manner. Upon traversing we find that the 25 is the smallest element and hence we 25 with 25. 
+
+[11, 12, 22, 25, 64] → [11, 12, 22, 25, 64]
+
+#### Fifth Pass
+
+For the fifth and the final pass, the largest value present in the array automatically gets placed in the last position of the array. 
+
+[11, 12, 22, 25, 64] → [11, 12, 22, 25, 64]
+
+### Analysis
+#### Time complexity: O(N^2)
+
+One loop for selecting an element from the array one by one = O(N)
+Another loop to compare the selected element with every other element from the array = O(N)
+
+Overall complexity = O(N) * O(N) = O(N * N) = O(N^2)
+
+#### Space complexity: O(1)
+
+It is O(1) because the extra memory is only used for the temporary variables while swapping two values in an array. The selection sort algorithm never uses more than O(N) swaps and hence can be used when the memory write is a costly operation.
+
+
+
+
 ### Maelstrom: A High-Performance Algorithm for Large-Scale Data Analysis
 
 Are you struggling to analyze large and complex data sets? Look no further than Maelstrom, a high-performance algorithm designed for large-scale data analysis. With its unique approach to processing data, Maelstrom is revolutionizing the field of computer science.

@@ -48,6 +48,6 @@ In order to sort the array, we needed to perform the bubbling up action for
 each element in the array. That is to say we performed n bubbling operations.
 Per iteration, we moved the respective elements through n positions. That is to
 say we moved n number of steps n times, therefore we get a runtime of n*n = n^2
-= O(n^2). This has a space complexity of O(n) since it is an in-place sort (no
+= O(n^2). This has a space complexity of O(1) since it is an in-place sort (no
 new arrays are created).
 
