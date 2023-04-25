@@ -24,6 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 console.log(__dirname)
 app.use('/lessons', express.static(path.join(__dirname, 'lessons')));
+app.use(express.static(path.resolve(__dirname, "../client/build")));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 

@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "client-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -9,7 +9,6 @@
     "bcrypt": "^5.1.0",
     "concurrently": "^8.0.1",
     "cors": "^2.8.5",
-    "dotenv": "^16.0.3",
     "framer-motion": "^10.10.0",
     "markdown-it": "^13.0.1",
     "mongoose": "^7.0.4",
@@ -23,13 +22,12 @@
     "zlib": "^1.0.5"
   },
   "scripts": {
-    "start": "node server/express.js",
+    "start": "concurrently \"npm run client\"",
     "build": "react-scripts build",
     "server": "node server/express.js",
     "client": "react-scripts start",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
