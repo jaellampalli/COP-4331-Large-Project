@@ -18,10 +18,23 @@ Calculating the mid-point :
 
 (0 + (6-0))/2 = 3
 
-After calculating the mid-point, we see that the above array is splitted into two subarrays consisting of 4 and 3 elements respectively.
-
+After calculating the mid-point, we see that the above array is splitted into two subarrays consisting of 4 and 3 elements respectively. Upon splitting the array into their respective midparts.
+[38, 27, 43, 3, 9, 82, 10]
+                |
+[38, 27, 43, 3]     [9, 82, 10]
+        |                 |
+[38, 27] [43, 3]    [9, 82] [10]
+    |       |           |
+[38] [27] [43] [3]    [9] [82]
 
 Upon splitting into possible smallest array, we swap the elements through comparison with the elements in its subarray. Thereby merging them to form a whole large array.
+[38] [27]     [43] [3]      [9] [82]   [10]
+  \   /         \   /         \   /      |
+  [27, 38]     [3, 43]        [9, 82]   [10]
+    \             /             \        /
+    [3, 27, 38, 43]           [9, 10, 82]
+          \                       /
+          [3, 9, 10, 27, 38, 43, 82]
 
 ###Space and time complexity:
 ####Time complexity: O(N log(N))
