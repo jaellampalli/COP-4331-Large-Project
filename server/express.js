@@ -14,7 +14,7 @@ const usersRouter = require("./routes/usersRouter");
 const lessonsRouter = require("./routes/lessonsRouter");
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = 5000;
 
 // Configuration
 require('dotenv').config();
