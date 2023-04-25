@@ -42,6 +42,7 @@ const BackDrop = styled(motion.div)`
     transform: rotate(30deg); 
     top: -290px;
     left: -60px;
+    z-index: 1px;
     background: rgb(0,0,0);
     background: linear-gradient(25deg, rgba(0,0,0,1) 35%, rgba(60,57,57,1) 100%);
 `;
@@ -84,7 +85,7 @@ const FormContainer = styled.div`
 const backdropVariants = {
     expanded: {
         width: "233%",
-        height: "1090px",
+        height: "1125px",
         borderRadius: "100%",
         transform: "rotate(800deg)"
     },
@@ -142,7 +143,7 @@ export function AccountBox(props){
                     {active === "login" && (
                         <HeaderContainer>
                             <HeaderText>Welcome</HeaderText>
-                            <SmallText>Please login to continue</SmallText>
+                            <SmallText>Please sign in to continue</SmallText>
                         </HeaderContainer>
                     )}
                     {active === "signup" && (
