@@ -43,9 +43,9 @@ const upload = multer({ storage: storage });
 /*                                   Routes                                   */
 /* ========================================================================== */
 
-app.get('/', async (req, res) => {
-    res.render('index');
-});
+// app.get('/', async (req, res) => {
+    // res.render('index');
+// });
 
 app.post('/search', async (req, res) => {
   const lessonName = req.body.lessonName.replace(/\s+/g, '-');
