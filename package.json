@@ -23,7 +23,7 @@
   },
   "scripts": {
     "start": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "cd server && node express.js",
+    "server": "node server/express.js",
     "client": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
