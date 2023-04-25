@@ -36,7 +36,7 @@ Upon splitting into possible smallest array, we swap the elements through compar
           \                       /
           [3, 9, 10, 27, 38, 43, 82]
 
-###Space and time complexity:
+###Analysis:
 ####Time complexity: O(N log(N))
 Merge Sort is a recursive algorithm and through the recurrence relation the O(N log(N)) runtime is achieved. The recurrence relation is give by T(n) = 2T(n/2) + Ө(n) 
 
