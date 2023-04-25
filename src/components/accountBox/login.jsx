@@ -43,7 +43,7 @@ export function LoginForm(props) {
             redirect: 'follow'
         };
 
-        fetch("http://localhost:5000/users/sign-in", requestOptions)
+        fetch("https://large-project-cop4331.herokuapp.com/users/sign-in", requestOptions)
         .then(response => response.text())
         .then(result => {
             result = JSON.parse(result);
