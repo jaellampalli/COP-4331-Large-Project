@@ -86,7 +86,7 @@ export function SignupForm(props) {
             redirect: 'follow'
         };
 
-        fetch("http://localhost:5000/users/sign-up", requestOptions)
+        fetch("https://large-project-cop4331.herokuapp.com:5000/users/sign-up", requestOptions)
         .then(response => response.text())
         .then(result => {
             result = JSON.parse(result);
