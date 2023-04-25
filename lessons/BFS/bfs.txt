@@ -1,0 +1,87 @@
+### BREADTH FIRST SEARCH
+### How it works:
+The breadth first search algorithm is a graphing algorithm. It is used to search a tree or a graph data structure for a given node. It starts from the root of the tree and searches all the nodes at the current level before going on to the next level. This is one of the efficient algorithms to solve many problems in graph theory. But unlike trees, graphs contain cycles which incase can come to the same node again. To avoid this conflict, we use two categories visited and not visited nodes.
+
+### Steps to implement BFS:
+Declare a queue and insert the node as the starting vertex.
+Now, initialize the visited array and mark the starting vertex as visited.
+Then follow by repeating the below steps until the queue becomes empty:
+1. Remove the first vertex of the queue
+2. State that vertex as visited.
+3. Insert all the remaining the unvisited neighboring vertex into the queue.
+
+### Example #1:
+Let us consider the following graph:
+
+                  1 ---- 3
+              /   |      |
+          0       |      |
+              \   |      |
+                  2 ---- 4
+
+#### Step 1:
+The visited array and the queue are going to be empty.
+
+#### Step 2:
+Start by visiting the node ‘0’, hence putting it in both visited and queue arrays.  
+
+Visited array:
+| 0 | &ensp;  | &ensp;  | &ensp;  | &ensp;  |
+
+Queue:
+| 0 | &ensp;  | &ensp;  | &ensp;  | &ensp;  |
+
+#### Step 3:
+Now remove the node ‘0’ from the queue and visit all the unvisited neighbors of the node ‘0’ and eventually push them into the queue.
+Since the unvisited neighbors of node ‘0’ are ‘1’ and ‘2’, hence visiting the nodes ‘1’ and ‘2’ and pushing them into the visited array. And setting the node ‘1’ in the queue.  
+
+Visited array:
+| 0 | 1  | 2 | &ensp;  | &ensp;  |
+
+Queue:
+| 1 | 2  | &ensp;  | &ensp;  | &ensp;  |
+
+#### Step 4:
+Now since we visited the neighbors of node ‘0’. We now remove ‘1’ from the queue and visit the unvisited neighbors of the node ‘1’.
+Since the unvisited neighbor of node ‘1’ is 3, pushing node ‘3’ into the visited array and marking node ‘2’ as the front element of the queue.  
+
+Visited array:
+| 0 | 1 | 2  | 3  | &ensp;  |
+
+Queue:
+| 2 | 3  | &ensp;  | &ensp;  | &ensp;  |
+
+#### Step 5:
+Now removing ‘2’ from the queue and moving node ‘3’ to the front element of the queue and visiting all the unvisited neighbors of node ‘2’.  
+
+Visited array:
+| 0 | 1 | 2  | 3  | 4  |
+
+Queue:
+| 3 | 4  | &ensp; | &ensp;  | &ensp;  |
+
+#### Step 6:
+Now we remove node ‘3’ from the front of the queue and push node ‘4’ as the front of the queue and visit all the unvisited neighbors of node ‘3’.  
+
+Visited array:
+| 0 | 1 | 2  | 3  | 4 |
+
+Queue:
+| 4 | &ensp;  | &ensp;  | &ensp;  | &ensp;  |
+
+#### Step 7:
+Now we remove the node ‘4’ from the front of the queue and visit all the unvisited neighbors of node ‘4’. Since there is no node remaining after node ‘4’, now the queue becomes empty. Since the queue becomes empty we stop the iteration at this step.  
+
+Visited array:
+| 0 | 1 | 2  | 3  | 4 |
+
+Queue:
+| &ensp; | &ensp;  | &ensp;  | &ensp;  | &ensp;  |
+
+### Analysis
+
+Time Complexity: O(V + E)
+The time complexity for BFS is O(V + E), where ‘V’ is the number of vertices and ‘E’ is the number of edges in the given graph. While performing the BFS, we visit each vertex only once and for a given vertex we visit all the unvisited vertices, therefore time taken to traverse is proportional to the sum of the number of the vertices and the edges.
+
+Space Complexity: O(V)
+The space complexity for BFS is O(V) where ‘V’ is the number of vertices in the given graph. While performing the BFS, we use a queue to store the vertices that we have visited but did not explore it neighboring vertices. Then we visit its adjacent vertices and add them to the end of the queue, we repeat this process until the queue becomes empty. Hence at any given point, the number of vertices in the queue will be equal to the number of vertices at the current level of the BFS tree.
