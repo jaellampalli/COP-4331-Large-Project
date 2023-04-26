@@ -1,35 +1,52 @@
-### The Enigma Algorithm: A Revolutionary Encryption Technique
+### Bubble Sort
 
-If you're looking for a cutting-edge encryption algorithm that can keep your data secure, look no further than Enigma. This innovative algorithm uses a unique approach to encryption that is revolutionizing the field of cybersecurity.
+One of the rudimentary sorting algorithms in CS.
 
-#### What is Enigma?
+Given an array of numbers, Bubble Sort sorts the contents in increasing order by "bubbling up" numbers to their correct position.
 
-Enigma is an encryption algorithm that uses a combination of substitution and transposition techniques to encrypt data. It was originally developed during World War II to secure military communications, but has since been adapted for use in other applications.
+### Process
 
-##### Substitution and Transposition
+Bubble sort makes n - 1 passes over the array where n is the number of elements in the array.
+For each loop, it swaps two consecutive numbers if they are out of order and continues doing so from the first to the last element of the array.
 
-Enigma uses a combination of substitution and transposition techniques to encrypt data. Substitution involves replacing each letter in the message with a different letter or symbol, while transposition involves rearranging the order of the letters.
+#### First Pass
 
-#### How Does Enigma Work?
+[7 1 5 9 2] → [1 7 5 9 2]  
+[1 7 5 9 2] → [1 5 7 9 2]  
+[1 5 7 9 2] → [1 5 7 9 2]  
+[1 5 7 9 2] → [1 5 7 2 9]  
 
-To use Enigma, you simply input your message into the algorithm and let it do its magic. Enigma will then use a series of substitution and transposition operations to encrypt your message.
+#### Second Pass
 
-##### Key Generation
+[1 5 7 2 9] → [1 5 7 2 9]  
+[1 5 7 9 2] → [1 5 7 2 9]  
+[1 5 7 9 2] → [1 5 2 7 9]  
+[1 5 2 7 9] → [1 5 2 7 9]  
 
-One of the key features of Enigma is its use of a unique encryption key to generate the substitution and transposition operations. This key is kept secret and is used to ensure that only authorized users can decrypt the message.
+#### Third Pass
 
-##### Rotors and Reflector
+[1 5 2 7 9] → [1 5 2 7 9]  
+[1 5 2 7 9] → [1 2 5 7 9]  
+[1 2 5 7 9] → [1 2 5 7 9]  
+[1 2 5 7 9] → [1 2 5 7 9]  
 
-Enigma uses a series of rotors and a reflector to perform its encryption operations. The rotors are essentially rotating substitution tables that change the letter-to-letter mappings with each rotation. The reflector is used to add an additional layer of complexity to the encryption process.
+#### Fourth Pass
 
-#### Why Choose Enigma?
+[1 2 5 7 9] → [1 2 5 7 9]  
+[1 2 5 7 9] → [1 2 5 7 9]  
+[1 2 5 7 9] → [1 2 5 7 9]  
+[1 2 5 7 9] → [1 2 5 7 9]  
 
-There are many reasons why you might choose Enigma over other encryption algorithms. Here are just a few:
+### Ideas
 
-- **Security**: Enigma is a highly secure encryption algorithm that has stood the test of time.
-- **Flexibility**: Enigma can be adapted for use in a wide range of applications, from military communications to personal messaging apps.
-- **Privacy**: Enigma ensures that only authorized users can decrypt your messages, protecting your privacy and sensitive information.
+Since bubble sort bubbles the largest numbers to the end of the array, it is guaranteed that it will put at least one element in the correct position for each sweep.
+Not only that, we're guaranteed that the fixed index will be the last index that has yet to be fixed.
 
-#### Conclusion
+### Analysis
 
-If you're looking for a powerful and secure encryption algorithm that can keep your data safe, Enigma is the way to go. With its unique combination of substitution and transposition techniques, Enigma is revolutionizing the field of cybersecurity and ensuring that sensitive information stays private. Try it out for yourself and see the results! 
+In order to sort the array, we needed to perform the bubbling up action for
+each element in the array. That is to say we performed n bubbling operations.
+Per iteration, we moved the respective elements through n positions. That is to
+say we moved n number of steps n times, therefore we get a runtime of n*n = n^2
+= O(n^2). This has a space complexity of O(1) since it is an in-place sort (no
+new arrays are created).
