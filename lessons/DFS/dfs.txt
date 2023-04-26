@@ -20,47 +20,85 @@ Let us consider the following graph:
 
 #### Step 1:
 Starting from the node ‘0’, we put the node ‘0’ in the visited array and visit all the unvisited neighbors of the node ‘0’ and add it to the stack.
-Visited:
-| 0 | &ensp;  | &ensp;  | &ensp;  | &ensp;  |
+Visited:  
 
-Stack:
-| 1 | 2  | 3  | &ensp; | &ensp;  |
+    ---------------------
+    | 0 |   |   |   |   |
+    ---------------------
+
+Stack:  
+    
+    ---------------------
+    | 1 | 2  | 3 |  |   |
+    ---------------------
+
 
 #### Step 2:
 Now we start by visiting the element from the top of the stack, since the top element of the stack is node ‘1’, we start by visiting node ‘1’. Visiting node ‘1’ and marking node ‘1’ as visited and visiting all the unvisited neighbors of node ‘1’ and adding them to the stack.  
 
-Visited:
-| 0 | 1 | &ensp;  | &ensp;  | &ensp;  |
+Visited:  
 
-Stack:
-| 2 | 3  | &ensp; | &ensp; | &ensp;  |
+    ---------------------
+    | 0 | 1 |   |   |   |
+    ---------------------
+
+Stack:  
+
+    ---------------------
+    | 2 | 3  |   |  |   |
+    ---------------------
+
 
 #### Step 3:
 Again starting by visiting the top element of the stack, we visit node ‘2’ and mark node ‘2’ as visited and visit all the unvisited neighbors of node ‘2’ and move them to the top of the stack.  
 
-Visited:
-| 0 | 1 | 2 | &ensp;  | &ensp;  |
+Visited:  
 
-Stack:
-| 4 | 3  | &ensp; | &ensp; | &ensp;  |
+    ---------------------
+    | 0 | 1 | 2 |   |   |
+    ---------------------
+
+
+Stack:  
+
+    ---------------------
+    | 4 | 3  |  |   |   |
+    ---------------------
+
 
 #### Step 4:
 Again starting by visiting the top element of the stack, node ‘4’. Visit node ‘4’ and mark that as visited and visit all the unvisited neighbors of node ‘4’ and add them to the top of the stack.  
 
-Visited:
-| 0 | 1 | 2 | 4 | &ensp; |
+Visited:  
 
-Stack:
-| 3 | &ensp;  | &ensp; | &ensp; | &ensp;  |
+    ---------------------
+    | 0 | 1 | 2 | 4 |   |
+    ---------------------
+
+
+Stack:  
+
+    ---------------------
+    | 3 |   |   |   |   |
+    ---------------------
+
 
 #### Step 5:
 Now visiting the last element from the top of the stack which is node ‘3’. After visiting the node ‘3’, the stack now becomes empty and we can terminate the search process in this step. The DFS search is now complete.  
 
-Visited:
-| 0 | 1 | 2 | 4 | 3 |
+Visited:  
 
-Queue:
-| &ensp; | &ensp;  | &ensp; | &ensp; | &ensp;  |
+    ---------------------
+    | 0 | 1 | 2 | 4 | 3 |
+    ---------------------
+
+
+Queue:  
+
+    ---------------------
+    |  |   |   |    |   |
+    ---------------------
+
 
 ### Analysis:
 Time Complexity: O(V + E)
@@ -68,4 +106,3 @@ The time complexity for DFS is O(V + E) where ‘V’ is the number of vertices 
 
 Space Complexity: O(V)
 The space complexity for DFS is O(V) where ‘V’ is the number of edges.
-
