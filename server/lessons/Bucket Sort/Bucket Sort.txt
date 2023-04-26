@@ -1,36 +1,61 @@
-### The Nexus Algorithm: A Revolutionary Approach to Network Management
+### BUCKET SORT
+### How it works:
+The bucket sort algorithm works by dividing the unsorted array elements into different groups named as buckets. Finally, all the sorted buckets are combined to form the final sorted array. The process of sorting the unsorted elements and then combining all the sorted elements is also known as ‘scatter-gather approach’.
 
-If you're looking for a cutting-edge algorithm that can manage complex networks with ease, look no further than Nexus. This innovative algorithm uses a unique approach to network management that is revolutionizing the field of computer networking.
+### Example #1:  
 
-### What is Nexus?
+Let us consider the following array:  
 
-Nexus is a network management algorithm that uses a novel technique called "network stitching" to manage networks. This technique involves stitching together different network components to create a unified network view.
+      --------------------------------------------------
+      | 0.42 | 0.32 | 0.23 | 0.52 | 0.25 | 0.47 | 0.51 | 
+      --------------------------------------------------
 
-#### Network Stitching
+#### Step 1:  
 
-Network stitching is a powerful technique that allows Nexus to manage networks in a way that is both efficient and accurate. By stitching together different network components, Nexus is able to create a comprehensive view of the entire network, while also minimizing the amount of time and resources required.
+We create an input array of size 10. Assuming that each array position is a bucket.  
 
-### How Does Nexus Work?
+      -----------------------------------------
+      | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+      -----------------------------------------
 
-To use Nexus, you simply feed your network data into the algorithm and let it do its magic. Nexus will automatically stitch together your network components, creating a unified view of your entire network.
+#### Step 2:  
 
-#### Network Component Analysis
+Insert all the elements into the buckets from the array. For example, if the input element is ‘0.23’, considering the size of the array, (array size = 10), we multiply the input element with the size of the array (0.23 * 10 = 2.3). Taking the integer value we store the input element ‘0.23’ into the bucket ‘2’.  
 
-One of the key benefits of Nexus is its ability to automatically analyze network components. This means that you don't need to spend hours manually analyzing individual network components before you can start managing your network.
+      --------------------------------------------------
+      | 0 | 0 | 0.23, 0.25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+      --------------------------------------------------
 
-#### Network Management
+#### Step 3:  
 
-Once Nexus has created a unified view of your network, it uses it to manage your network components. This allows you to easily monitor network traffic, troubleshoot problems, and optimize performance.
+Simialrly, all the other elements are inserted into their respective buckets.  
 
-### Why Choose Nexus?
+      -----------------------------------------------------------------------
+      | 0 | 0 | 0.23, 0.25 | 0.32 | 0.42, 0.47 | 0.52, 0.51 | 0 | 0 | 0 | 0 |
+      -----------------------------------------------------------------------
 
-There are many reasons why you might choose Nexus over other network management algorithms. Here are just a few:
+#### Step 4:  
 
-- **Efficiency**: Nexus is designed to manage large networks quickly and efficiently.
-- **Accuracy**: Nexus's network stitching technique allows it to create a comprehensive view of your entire network, resulting in more accurate network management.
-- **Ease of Use**: Nexus is easy to use, even if you don't have a background in network management.
-- **Flexibility**: Nexus can be used for a wide range of network management applications, from small office networks to large data center networks.
+Finally sorting the elements placed inside the respective buckets.  
 
-### Conclusion
+      -----------------------------------------------------------------------
+      | 0 | 0 | 0.23, 0.25 | 0.32 | 0.42, 0.47 | 0.51, 0.52 | 0 | 0 | 0 | 0 |
+      -----------------------------------------------------------------------
 
-If you're looking for a powerful and efficient network management algorithm that can handle even the most complex networks, Nexus is the way to go. With its unique network stitching technique and automatic network component analysis, Nexus is revolutionizing the field of network management. Try it out for yourself and see the results! 
+#### Step 5:  
+
+Final structure of the array:  
+
+      --------------------------------------------------
+      | 0.23 | 0.25 | 0.32 | 0.42 | 0.47 | 0.51 | 0.52 | 
+      --------------------------------------------------
+
+### Analysis:  
+
+Time Complexity: O(n + k), O(n<sup>2</sup>)  
+
+The best case runtime for bucket sort is O(n + k)  and the worst case is O(n<sup>2</sup>). The best case runtime occurs when the elements are uniformly distributed in the buckets. O(n) is the runtime taken for building the buckets and O(k) is the runtime taken for sorting the elements. The worst case occurs when the input elements are in the close range. Since this results in placing of more elements into the same buckets.
+
+Space Complexity: O(n + k)  
+
+The space complexity for bucket sort is O(n + k) where ‘n’ is the number of elements and ‘k’ is the number of buckets used.
