@@ -96,9 +96,9 @@ The connecting edges are {2,8}, {2,3}, {5,3}. We include the edge {2,8} since it
           4 /              2| \ 
            /                |  \
           0                 8    4
-           \                |     \
-          8 \               |      \
-             \              |       \
+           \                      \
+          8 \                      \
+             \                      \
               7 ----------- 6 ------ 5
                    1              2
 
@@ -110,9 +110,9 @@ After exploring the connecting edges from the above figure we connect the edge {
          4 /             2| \ 
           /               |  \
           0               8    4
-           \              |     \
-          8 \             |      \
-             \            |       \
+           \                    \
+          8 \                    \
+             \                    \
               7 --------- 6 ------ 5
                    1          2
 
@@ -125,9 +125,9 @@ Therefore the final structure of the MST is:
           4 /             2| \          9
            /               |  \          \
           0                8    4         \
-           \               |     \         4
-           8 \             |      \          
-               \           |       \           
+           \                     \         4
+           8 \                    \          
+               \                   \           
                 7 --------- 6 ------ 5
                     1          2
 
