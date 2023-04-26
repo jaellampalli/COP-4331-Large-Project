@@ -56,26 +56,26 @@ Now pick up the next smallest edge, 6-5. Since no cycle is formed we include it 
 #### Step 4:
 Now pick up the next smallest edge, 0-1. Since no cycle is formed we can include it.  
 
-          1           2
-        /             |
-     4 /              | 2
-      /               |
-    0                 8
+                    1           2
+                  /             |
+               4 /              | 2
+                /               |
+              0                 8
 
-           1           2
-    7 --------- 6 --------- 5
+                   1           2
+             7 --------- 6 --------- 5
 
 #### Step 5:
 Now picking the next smallest edge, 2-5. Since no cycle is formed we include it.  
 
-               1           2
-            /              |\
-       4   /             2 | \
-         /                 |   \  4
-        0                  8     \   
-                                  \
-          1          2             \
-     7 --------- 6 ---------------- 5
+                         1           2
+                        /            |\
+                  4   /            2 | \
+                     /               |   \  4
+                    0                8    \   
+                                            \
+                      1          2           \
+                7 --------- 6 ---------------- 5
 
 #### Step 6:
 Now picking up the next smallest edge, 8-6. If we include the edge 8-6, then it results in forming a cycle so we discard it. And by picking up the edge 2-3 no cycle is formed so we include it.  
