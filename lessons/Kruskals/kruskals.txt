@@ -1,0 +1,132 @@
+### KRUSKAL’s ALGORITHM
+### How it works:
+Kruskal’s algorithm is a minimum spanning tree or also known as minimum weight spanning tree graphing algorithm. The kruskal’s algorithm starts by picking the minimum weighted edge at the first and then the maximum weighted edge at the very last. It keeps on adding the new edges and the nodes in the minimum spanning tree (MST) until the newly added edge does not form a cycle. Therefore, we are making a locally optimal choice in each step thus finding the optimal solution. Hence, the kruskal’s algorithm is also considered a greedy algorithm.
+
+### How to implement Kruskal’s algorithm:
+Start by sorting all the edges in the non-decreasing order of their weight.
+Then pick the smallest edge, check if the picked smallest edge is forming a cycle or not. If a cycle is not formed then include that edge or else discard the edge and look for the next possible edge.
+Carry out the above steps until there are (V-1) edges in the spanning tree.
+
+### Example #1:
+Let us consider the following graph:  
+
+              8              7   
+           1 ---------- 2 ----------- 3
+          /|            |\            |\
+    4   /  |          2 |  \          |  \ 9
+      /    |            |    \        |    \
+    0      | 11         8      \ 4    | 14  4
+     \     |       /    |        \    |    /
+    8 \    |    /  7    | 6        \  |  / 10
+        \  | /          |            \ /
+        7 ---------- 6 -------------- 5
+               1            2
+
+Since the above graph has 9 edges, so the minimum spanning tree formed will be having (9-1) = 8 edges.
+
+#### Step 1:
+Let us starting by picking the smallest edge from 7-6, no cycle is formed from it, so we include it.  
+
+                    1
+             7 --------- 6
+
+#### Step 2:
+Now pick up the next smallest edge, 8-2. Since no cycle is formed by we include it.  
+
+                      2
+                      |
+                      | 2
+                      |
+                      8
+                1     
+          7 --------- 6
+
+#### Step 3:
+Now pick up the next smallest edge, 6-5. Since no cycle is formed we include it in the cycle.  
+
+                     2
+                     |
+                     | 2
+                     |
+                     8
+                     
+           1           2
+    7 --------- 6 --------- 5
+
+#### Step 4:
+Now pick up the next smallest edge, 0-1. Since no cycle is formed we can include it.  
+
+          1           2
+        /             |
+     4 /              | 2
+      /               |
+    0                 8
+
+           1           2
+    7 --------- 6 --------- 5
+
+#### Step 5:
+Now picking the next smallest edge, 2-5. Since no cycle is formed we include it.  
+
+               1           2
+            /              |\
+       4   /             2 | \
+         /                 |   \  4
+        0                  8     \   
+                                  \
+          1          2             \
+     7 --------- 6 ---------------- 5
+
+#### Step 6:
+Now picking up the next smallest edge, 8-6. If we include the edge 8-6, then it results in forming a cycle so we discard it. And by picking up the edge 2-3 no cycle is formed so we include it.  
+
+                                            7
+                           1           2 ------------ 3
+                          /            |\
+                     4   /           2 | \
+                       /               |   \  4
+                      0                8     \   
+                                                \
+                             1             2       \
+                       7 --------- 6 ---------------- 5
+
+#### Step 7:
+Picking up the edge 7-8 results in forming a cycle so we discard it and pick up the next edge which is 0-7.  
+
+                                             7
+                            1         2 ------------ 3
+                          /           | \
+                    4   /           2 |  \
+                       /              |   \  4
+                    0                 8     \   
+                       \                      \
+                       8  \                     \
+                            \                     \
+                              7 ------ 6 --------- 5
+                                   1         2
+
+#### Step 8:
+Picking up the edge 1-2 results in cycle being formed so we discard it and pick up the next edge which is 3-4.  
+
+                                                 7
+                                 1         2 ------------ 3
+                                /          | \             \
+                           4   /         2 |  \              \ 9
+                              /            |   \  4            \
+                           0               8     \               4
+                              \                     \
+                             8  \                     \
+                                  \                     \
+                                    7 ------ 6 --------- 5
+                                          1         2
+
+If we observe after step 8, the number of edges in the above obtained MST, equals to (V-1), so we can terminate the algorithm at this step.
+
+### Analysis:
+Time complexity: O(E * log V)
+The time complexity for the kruskal’s algorithm is O(E * logV) where ‘E’ is the number of edges and ‘V’ is the number of vertices. The sorting of the edges takes O(E * logE). After the iteration of the edges, we apply the find and union algorithm. The find and union algorithm takes up to O(logV). This results the overall complexity to be O(E * logE + E * logV). Since the value of E can also be O(V2) therefore the time complexity is O(E * logV).
+
+Space complexity: O(V + E)
+The space complexity for kruskal’s algorithm is O(V+E) where ‘V’ is the number of vertices and ‘E’ is the number of edges.
+
+            
