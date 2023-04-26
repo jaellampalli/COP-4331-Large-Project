@@ -1,0 +1,71 @@
+### DEPTH FIRST SEARCH
+### How it works:
+Like BFS, Depth first search (DFS) is a graphing algorithm and works almost similar to the breadth first search algorithm. Each of the nodes are divided into two categories visited and not visited. We mark each  node as visited and not visited inorder to conflict in the cycles. The DFS algorithm can be implemented by using the list representation and the matrix representation.
+
+### How to implement the DFS:
+We start by maintaining two separate array marked as ‘visited’ and ‘stack’.
+As the initial step, we start by taking one of the nodes and putting on the top of the stack.
+Take the top element of the stack and add it to visited array.
+Visit the neighboring unvisited nodes and add the unvisited nodes to the top of the stack.
+Keep repeating the steps 3 and 4 until the stack becomes empty.
+
+### Example #1:
+Let us consider the following graph:  
+
+    0 ---- 3  
+    | \
+    |   2
+    | /   \
+    1      4
+
+#### Step 1:
+Starting from the node ‘0’, we put the node ‘0’ in the visited array and visit all the unvisited neighbors of the node ‘0’ and add it to the stack.
+Visited:
+| 0 | &ensp;  | &ensp;  | &ensp;  | &ensp;  |
+
+Stack:
+| 1 | 2  | 3  | &ensp; | &ensp;  |
+
+#### Step 2:
+Now we start by visiting the element from the top of the stack, since the top element of the stack is node ‘1’, we start by visiting node ‘1’. Visiting node ‘1’ and marking node ‘1’ as visited and visiting all the unvisited neighbors of node ‘1’ and adding them to the stack.  
+
+Visited:
+| 0 | 1 | &ensp;  | &ensp;  | &ensp;  |
+
+Stack:
+| 2 | 3  | &ensp; | &ensp; | &ensp;  |
+
+#### Step 3:
+Again starting by visiting the top element of the stack, we visit node ‘2’ and mark node ‘2’ as visited and visit all the unvisited neighbors of node ‘2’ and move them to the top of the stack.  
+
+Visited:
+| 0 | 1 | 2 | &ensp;  | &ensp;  |
+
+Stack:
+| 4 | 3  | &ensp; | &ensp; | &ensp;  |
+
+#### Step 4:
+Again starting by visiting the top element of the stack, node ‘4’. Visit node ‘4’ and mark that as visited and visit all the unvisited neighbors of node ‘4’ and add them to the top of the stack.  
+
+Visited:
+| 0 | 1 | 2 | 4 | &ensp; |
+
+Stack:
+| 3 | &ensp;  | &ensp; | &ensp; | &ensp;  |
+
+#### Step 5:
+Now visiting the last element from the top of the stack which is node ‘3’. After visiting the node ‘3’, the stack now becomes empty and we can terminate the search process in this step. The DFS search is now complete.  
+
+Visited:
+| 0 | 1 | 2 | 4 | 3 |
+
+Queue:
+| &ensp; | &ensp;  | &ensp; | &ensp; | &ensp;  |
+
+### Analysis:
+Time Complexity: O(V + E)
+The time complexity for DFS is O(V + E) where ‘V’ is the number of vertices and the ‘E’ is the number of edges.
+
+Space Complexity: O(V)
+The space complexity for DFS is O(V) where ‘V’ is the number of edges.
+
