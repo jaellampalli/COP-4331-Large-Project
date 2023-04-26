@@ -58,7 +58,7 @@ export function LoginForm(props) {
 
             // If login was valid, save login and go to lessons page
             localStorage.setItem("Login", email);
-            window.location.href = "/lessons";
+            window.location.href = "/home";
         })
         .catch(error => console.log('error', error));
     }

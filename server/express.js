@@ -44,7 +44,7 @@ const upload = multer({ storage: storage });
 /*                                   Routes                                   */
 /* ========================================================================== */
 
-app.get('/', async (req, res) => {
+app.get('/home', async (req, res) => {
     res.render('index');
 });
 
