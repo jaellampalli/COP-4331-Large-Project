@@ -124,7 +124,7 @@ If we observe after step 8, the number of edges in the above obtained MST, equal
 
 ### Analysis:
 Time complexity: O(E * log V)
-The time complexity for the kruskal’s algorithm is O(E * logV) where ‘E’ is the number of edges and ‘V’ is the number of vertices. The sorting of the edges takes O(E * logE). After the iteration of the edges, we apply the find and union algorithm. The find and union algorithm takes up to O(logV). This results the overall complexity to be O(E * logE + E * logV). Since the value of E can also be O(V2) therefore the time complexity is O(E * logV).
+The time complexity for the kruskal’s algorithm is O(E * logV) where ‘E’ is the number of edges and ‘V’ is the number of vertices. The sorting of the edges takes O(E * logE). After the iteration of the edges, we apply the find and union algorithm. The find and union algorithm takes up to O(logV). This results the overall complexity to be O(E * logE + E * logV). Since the value of E can also be O(V<sup>2</sup>) therefore the time complexity is O(E * logV).
 
 Space complexity: O(V + E)
 The space complexity for kruskal’s algorithm is O(V+E) where ‘V’ is the number of vertices and ‘E’ is the number of edges.
