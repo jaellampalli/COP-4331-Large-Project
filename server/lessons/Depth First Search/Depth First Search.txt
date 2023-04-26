@@ -100,9 +100,12 @@ Queue:
     ---------------------
 
 
-### Analysis:
-Time Complexity: O(V + E)
+### Analysis:  
+
+Time Complexity: O(V + E)  
+
 The time complexity for DFS is O(V + E) where ‘V’ is the number of vertices and the ‘E’ is the number of edges.
 
-Space Complexity: O(V)
+Space Complexity: O(V)  
+
 The space complexity for DFS is O(V) where ‘V’ is the number of edges.
