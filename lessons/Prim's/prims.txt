@@ -1,0 +1,143 @@
+### PRIM’S ALGORITHM
+### How it works:
+Prim’s algorithms is also considered one of the minimum spanning algorithms and a greedy algorithm. Initially the algorithm starts with the single node and moves through the adjacent nodes exposing all the connected edges.
+
+### How to implement Prim’s Algorithm:
+Select the starting vertex of the minimum spanning tree.
+Map out all the connecting edges of the starting vertex.
+Find the minimum edge among these mapped out edges.
+Add the chosen edge to the minimum spanning tree if and only if the chosen edge does not form a cycle.
+Repeat the steps 2-5 until the desired minimum spanning tree is achieved, once the MST is achieved terminate and exit.
+
+### Example #1:
+Let us consider the following graph:  
+
+               1 ------ 2 --------- 3
+              / |    8  |\      7   |\
+           4 /  |      2|  \        |  \ 9
+            /   |       |   \       |    \
+           0    11      8    \     14      4
+            \    |    / |     \     |      /
+            8 \  | 7 /  |      \    |    / 10
+               \ |  /   |        \  |  /
+                7 ------ 6 --------- 5
+                     1         2
+
+#### Step 1:
+Start by selecting the arbitrary vertex or the starting vertex. For the above example let us select the starting vertex to be node ‘0’.
+
+#### Step 2:
+Now map out all the connecting edges of node ‘0’. The connecting edges are {0,1}, {0,7}. Among these two connecting edges, the edge holding the minimum weight is the edge {0,1}. So we include the edge {0,1} in the MST.  
+
+              1
+            /
+        4 /
+        /
+       0
+
+#### Step 3:
+Now the connecting edges are {0,7}, {1,7}, {1,2}. Among these connecting edges the edge holding the minimum weight is {0,7} and {1,2}. We can include either of the edge. For this example we will start by including the edge {0,7}.  
+
+             1
+           /
+        4 /
+         /
+        0
+         \
+        8 \ 
+           \
+            7
+
+#### Step 4:
+Now the connecting edges are {1,2}, {7,8}, {7,6}. Among these connecting edges the edge holding the minimum weight is {7,6}. Since it does not form a cycle we include that edge in the MST. However, we can not include the edge {1,7} because it forms a cycle.  
+
+            1
+           /
+        4 /
+         /
+        0
+         \
+        8 \ 
+            \       1
+             7 ---------- 6
+
+#### Step 5:
+Now exploring the connecting edges, the connecting edges are {1,2}, {7,8}, {6,8}, {6,5}. We include {6,5} since it holds the minimum edge weight.  
+
+             1
+           /
+        4 /
+         /
+        0
+          \
+          8 \ 
+              \       1           2
+               7 ---------- 6 ------- 5
+
+#### Step 6:
+Among all the connecting edges, we include the edge {5,2} since it holds the minimum edge weight and does not form a cycle.  
+
+              1           2 
+            /              \
+         4 /                 \ 
+          /                     \
+         0                        4
+           \                       \
+          8 \                       \
+              \                      \
+                7 ---------- 6 ------- 5
+                     1            2
+             
+#### Step 7:
+The connecting edges are {2,8}, {2,3}, {5,3}. We include the edge {2,8} since it holds the minimum edge weight and also it does not form a cycle.  
+
+                1           2 
+              /             |\
+          4 /              2| \ 
+           /                |  \
+          0                 8    4
+           \                |     \
+          8 \               |      \
+             \              |       \
+              7 ----------- 6 ------ 5
+                   1              2
+
+#### Step 8:
+After exploring the connecting edges from the above figure we connect the edge {2,3} in the MST.  
+
+             1           2 -------- 3 
+            /             |\   7
+         4 /             2| \ 
+          /               |  \
+          0               8    4
+           \              |     \
+          8 \             |      \
+             \            |       \
+              7 --------- 6 ------ 5
+                   1          2
+
+#### Step 9:
+From the above figure, only node ‘4’ needs to be included, so we include the edge {3,4} into the MST. Since we included all our edges into the MST, we can terminate the process at this step and exit after this step.
+Therefore the final structure of the MST is:  
+
+              1           2 -------- 3 
+             /             |\   7      \
+          4 /             2| \          9
+           /               |  \          \
+          0                8    4         \
+           \               |     \         4
+           8 \             |      \          
+               \           |       \           
+                7 --------- 6 ------ 5
+                    1          2
+
+Total edge weight of the MST = (4+8+1+2+4+2+7+9) = 37
+
+### Analysis:
+Time Complexity:O(V<sup>2</sup>)
+The runtime complexity for the prim’s algorithm using the matrix representation is O(V<sup>2</sup>) where ‘V’ is the number of vertices in the graph. However, if we implement the prim’s algorithm using the binary heap or fibonacci heap then the runtime is represented as O(E + logV) where ‘E’ is the number of edges in the graph.
+
+Space Complexity:O(V + E)
+The space complexity for prim’s algorithm is O(V + E) where ‘V’ is the number of vertices and ‘E’ is the number of edges.
+
+
