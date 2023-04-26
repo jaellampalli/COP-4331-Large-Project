@@ -133,10 +133,13 @@ Therefore the final structure of the MST is:
 
 Total edge weight of the MST = (4+8+1+2+4+2+7+9) = 37
 
-### Analysis:
-Time Complexity:O(V<sup>2</sup>)
+### Analysis:  
+
+Time Complexity:O(V<sup>2</sup>)  
+
 The runtime complexity for the prim’s algorithm using the matrix representation is O(V<sup>2</sup>) where ‘V’ is the number of vertices in the graph. However, if we implement the prim’s algorithm using the binary heap or fibonacci heap then the runtime is represented as O(E + logV) where ‘E’ is the number of edges in the graph.
 
-Space Complexity:O(V + E)
+Space Complexity:O(V + E)  
+
 The space complexity for prim’s algorithm is O(V + E) where ‘V’ is the number of vertices and ‘E’ is the number of edges.
 
