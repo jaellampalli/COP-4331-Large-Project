@@ -1,32 +1,104 @@
-### The Horizon Algorithm: A Breakthrough in Time Series Forecasting
+### Selection Sort
 
-If you're looking for a state-of-the-art algorithm for time series forecasting, Horizon is the solution you've been searching for. With its unique approach to forecasting and powerful machine learning capabilities, Horizon is revolutionizing the field of predictive analytics.
+### How it works: 
 
-### What is Horizon?
+The selection sort algorithm works by repeatedly selecting either the smallest
+or the largest element from the unsorted portion of the list and swapping it
+into the sorted portion of the list. This algorithm maintains two portions of
+the array: 
 
-Horizon is a machine learning algorithm that is specifically designed for time series forecasting. It uses a combination of deep learning and statistical modeling techniques to analyze time series data and make accurate predictions.
+- The subarray that is sorted 
+- The remaining subarray that is unsorted
 
-#### Deep Learning Techniques
+Subsequently after every iteration the smallest / largest element from the
+unsorted subarray is picked and moved to the beginning of the unsorted
+subarray. Therefore after every iteration the size of the sorted subarray
+increases by one and the size of the unsorted subarray decreases by one. Upon
+the completion of the Nth iteration (the size of the array) the sorted array is
+achieved.
 
-One of the key strengths of Horizon is its use of deep learning techniques. By analyzing large amounts of historical data, Horizon is able to identify complex patterns and relationships in the data that might not be visible to the human eye.
+### Example
 
-### How Does Horizon Work?
+Let us consider the following array: [64, 25, 12, 22, 11]
 
-To use Horizon, you simply feed your time series data into the algorithm and let it do its magic. Horizon will automatically analyze the data and generate a forecast for the future.
+#### First Pass
 
-#### Statistical Modeling
+Traversing the whole array from (i = 0) sequentially. After traversing through the array we observe that the 11 is the lowest value. Therefore we swap 64 with 11.
 
-In addition to deep learning techniques, Horizon also uses statistical modeling to generate accurate forecasts. This allows the algorithm to take into account factors such as seasonality, trend, and external variables that might impact the time series data.
+[64, 25, 12, 22, 11] → [11, 25, 12, 22, 64]
 
-### Why Choose Horizon?
+#### Second Pass
 
-There are many reasons why you might choose Horizon over other time series forecasting solutions. Here are just a few:
+For the second pass, start traversing from the index position (i = 1) in a sequential manner. Upon traversing we find that the 12 is the least element. Hence we swap 12 with 25.
 
-- **Accuracy**: Horizon's use of deep learning and statistical modeling techniques allows it to generate highly accurate forecasts.
-- **Flexibility**: Horizon can be used for a wide range of applications, from financial forecasting to predictive maintenance in manufacturing.
-- **Ease of Use**: Horizon is designed to be easy to use, even if you don't have a background in data science or machine learning.
-- **Real-Time Forecasting**: Horizon is capable of generating real-time forecasts, making it ideal for applications where quick decision-making is essential.
+[11, 25, 12, 22, 64] → [11, 12, 25, 22, 64]
+
+#### Third Pass
+
+For the third pass, start traversing from the index position (i = 2) in a sequential manner. Upon traversing we find that the 22 is the smallest element and hence we 22 with 25.
+
+[11, 12, 25, 22, 64] → [11, 12, 22, 25, 64]
+
+#### Fourth Pass
+
+For the fourth pass, start traversing from the index positon (i = 3) in a sequential manner. Upon traversing we find that the 25 is the smallest element and hence we 25 with 25. 
+
+[11, 12, 22, 25, 64] → [11, 12, 22, 25, 64]
+
+#### Fifth Pass
+
+For the fifth and the final pass, the largest value present in the array automatically gets placed in the last position of the array. 
+
+[11, 12, 22, 25, 64] → [11, 12, 22, 25, 64]
+
+### Analysis
+#### Time complexity: O(N^2)
+
+One loop for selecting an element from the array one by one = O(N)
+Another loop to compare the selected element with every other element from the array = O(N)
+
+Overall complexity = O(N) * O(N) = O(N * N) = O(N^2)
+
+#### Space complexity: O(1)
+
+It is O(1) because the extra memory is only used for the temporary variables while swapping two values in an array. The selection sort algorithm never uses more than O(N) swaps and hence can be used when the memory write is a costly operation.
+
+
+
+
+### Maelstrom: A High-Performance Algorithm for Large-Scale Data Analysis
+
+Are you struggling to analyze large and complex data sets? Look no further than Maelstrom, a high-performance algorithm designed for large-scale data analysis. With its unique approach to processing data, Maelstrom is revolutionizing the field of computer science.
+
+### What is Maelstrom?
+
+Maelstrom is a distributed machine learning algorithm that is designed to work with large and complex data sets. Unlike traditional algorithms, which operate on a single machine, Maelstrom can be distributed across multiple machines, allowing it to process massive amounts of data with ease.
+
+#### Distributed Computing
+
+Maelstrom uses a technique called distributed computing to break up data sets into smaller chunks, which are processed simultaneously across multiple machines. This allows for faster processing times and more efficient use of computing resources.
+
+### How Does Maelstrom Work?
+
+To use Maelstrom, you simply feed your data into the algorithm and let it do its magic. Maelstrom will automatically distribute the data across multiple machines and use machine learning techniques to analyze the data and uncover insights.
+
+#### Scalability
+
+One of the key benefits of Maelstrom is its scalability. As your data sets grow in size, Maelstrom can scale to meet your needs, without sacrificing performance or accuracy.
+
+#### Real-Time Processing
+
+Maelstrom is designed to process data in real-time, allowing for faster and more efficient analysis of data. This is especially important in industries such as finance and healthcare, where real-time data analysis can make a significant impact.
+
+### Why Choose Maelstrom?
+
+There are many reasons why you might choose Maelstrom over other machine learning algorithms. Here are just a few:
+
+- **Scalability**: Maelstrom can handle even the largest and most complex data sets, making it a great choice for big data applications.
+- **Efficiency**: Maelstrom's distributed computing approach allows for faster processing times and more efficient use of computing resources.
+- **Real-Time Processing**: Maelstrom can process data in real-time, allowing for faster and more efficient analysis of data.
+- **Accuracy**: Maelstrom uses machine learning techniques to uncover insights and patterns in your data, resulting in more accurate predictions and better decision-making.
 
 ### Conclusion
 
-If you're looking for a breakthrough in time series forecasting, Horizon is the algorithm for you. With its powerful machine learning capabilities and unique approach to forecasting, Horizon is revolutionizing the field of predictive analytics. Try it out for yourself and see the results! 
+If you're struggling to analyze large and complex data sets, Maelstrom is the solution you've been looking for. With its unique approach to distributed computing and real-time processing, Maelstrom is revolutionizing the field of data analysis and opening up new possibilities for industries such as finance, healthcare, and more. Give it a try and see the results for yourself! 
