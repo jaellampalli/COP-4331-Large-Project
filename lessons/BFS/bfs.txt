@@ -25,58 +25,93 @@ The visited array and the queue are going to be empty.
 #### Step 2:
 Start by visiting the node ‘0’, hence putting it in both visited and queue arrays.  
 
-Visited array:
-| 0 | &ensp;  | &ensp;  | &ensp;  | &ensp;  |
+Visited:  
 
-Queue:
-| 0 | &ensp;  | &ensp;  | &ensp;  | &ensp;  |
+    ----------------------
+    | 0 |   |   |    |   |
+     ---------------------
+Queue:  
+
+    --------------------------
+    | 0 |    |    |     |    |
+    --------------------------
 
 #### Step 3:
 Now remove the node ‘0’ from the queue and visit all the unvisited neighbors of the node ‘0’ and eventually push them into the queue.
 Since the unvisited neighbors of node ‘0’ are ‘1’ and ‘2’, hence visiting the nodes ‘1’ and ‘2’ and pushing them into the visited array. And setting the node ‘1’ in the queue.  
 
-Visited array:
-| 0 | 1  | 2 | &ensp;  | &ensp;  |
+Visited:  
 
-Queue:
-| 1 | 2  | &ensp;  | &ensp;  | &ensp;  |
+    ----------------------
+    | 0 | 1  | 2 |   |   |
+    ---------------------
+
+Queue:  
+
+    ---------------------
+    | 1 | 2  |   |   |   |
+    ----------------------
 
 #### Step 4:
 Now since we visited the neighbors of node ‘0’. We now remove ‘1’ from the queue and visit the unvisited neighbors of the node ‘1’.
 Since the unvisited neighbor of node ‘1’ is 3, pushing node ‘3’ into the visited array and marking node ‘2’ as the front element of the queue.  
 
-Visited array:
-| 0 | 1 | 2  | 3  | &ensp;  |
+Visited:  
+
+     -----------------------
+     | 0 | 1 | 2  | 3  |    |
+    -------------------------
 
 Queue:
-| 2 | 3  | &ensp;  | &ensp;  | &ensp;  |
+
+    ----------------------
+    | 2 | 3  |   |   |   |
+    ----------------------
 
 #### Step 5:
 Now removing ‘2’ from the queue and moving node ‘3’ to the front element of the queue and visiting all the unvisited neighbors of node ‘2’.  
 
-Visited array:
-| 0 | 1 | 2  | 3  | 4  |
+Visited:  
+    
+    ------------------------
+    | 0 | 1 | 2  | 3  | 4  |
+    ------------------------
 
-Queue:
-| 3 | 4  | &ensp; | &ensp;  | &ensp;  |
+Queue:  
+    
+    -----------------------
+    | 3 | 4  |   |    |   |
+    -----------------------
 
 #### Step 6:
 Now we remove node ‘3’ from the front of the queue and push node ‘4’ as the front of the queue and visit all the unvisited neighbors of node ‘3’.  
 
-Visited array:
-| 0 | 1 | 2  | 3  | 4 |
+Visited:
+
+    -----------------------
+    | 0 | 1 | 2  | 3  | 4 |
+    -----------------------
 
 Queue:
-| 4 | &ensp;  | &ensp;  | &ensp;  | &ensp;  |
+
+    ---------------------
+    | 4 |   |   |   |   |
+    ---------------------
 
 #### Step 7:
 Now we remove the node ‘4’ from the front of the queue and visit all the unvisited neighbors of node ‘4’. Since there is no node remaining after node ‘4’, now the queue becomes empty. Since the queue becomes empty we stop the iteration at this step.  
 
-Visited array:
-| 0 | 1 | 2  | 3  | 4 |
+Visited:  
+    
+    -----------------------
+    | 0 | 1 | 2  | 3  | 4 |
+    -----------------------
 
-Queue:
-| &ensp; | &ensp;  | &ensp;  | &ensp;  | &ensp;  |
+Queue:  
+
+    --------------------
+    |  |   |   |   |   |
+    --------------------
 
 ### Analysis
 
