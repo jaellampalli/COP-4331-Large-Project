@@ -1,14 +1,14 @@
-###MERGE SORT
+### MERGE SORT
 
-###How it works : 
+### How it works : 
 
 Merge sort is also known as "Divide and Conquer Algorithm". A given array is divided into smaller subarrays, each subarray is sorted individually therefore merging all the sorted subarrays in the end to form a sorted whole array. Merge sort algorithm is efficient for operating with large datasets. In the application of merge sort, a gidven array is divided into a subarray and the subarray is further divided into smaller subarrays, the division of the subarrays continues until the array becomes empty or the array is left with only a single element. At this particular instance the dividing of the subarray stops. After the sorting of the smaller subarrays, the smaller subarrays are merged eventually to make a larger one.
 
-###Example #1: 
+### Example #1: 
 
 Let us consider the following array arr[] = {38, 27, 43, 3, 9, 82, 10}
 
-####Steps:
+#### Steps:
 
 Dividing the array into smaller subarrays. We can divide the array into the subarray by calculating its mid-point. We calculate the mid-point using the index position of the arrays.
 
@@ -18,27 +18,31 @@ Calculating the mid-point :
 
 (0 + (6-0))/2 = 3
 
-After calculating the mid-point, we see that the above array is splitted into two subarrays consisting of 4 and 3 elements respectively. Upon splitting the array into their respective midparts.
-[38, 27, 43, 3, 9, 82, 10]
-                |
-[38, 27, 43, 3]     [9, 82, 10]
-        |                 |
-[38, 27] [43, 3]    [9, 82] [10]
-    |       |           |
-[38] [27] [43] [3]    [9] [82]
+After calculating the mid-point, we see that the above array is splitted into two subarrays consisting of 4 and 3 elements respectively. Upon splitting the array into their respective midparts.  
 
-Upon splitting into possible smallest array, we swap the elements through comparison with the elements in its subarray. Thereby merging them to form a whole large array.
-[38] [27]     [43] [3]      [9] [82]   [10]
-  \   /         \   /         \   /      |
-  [27, 38]     [3, 43]        [9, 82]   [10]
-    \             /             \        /
-    [3, 27, 38, 43]           [9, 10, 82]
-          \                       /
-          [3, 9, 10, 27, 38, 43, 82]
+                  [38, 27, 43, 3, 9, 82, 10] 
+                               |
+                   [38, 27, 43, 3] [9, 82, 10] 
+                     |                 |
+                  [38, 27] [43, 3]   [9, 82] [10] 
+                      |        |           |
+                 [38]  [27] [43] [3]   [9] [82]  
 
-###Analysis:
-####Time complexity: O(N log(N))
+
+
+Upon splitting into possible smallest array, we swap the elements through comparison with the elements in its subarray. Thereby merging them to form a whole large array.  
+
+     [38] [27]    [43] [3]     [9]  [82]   [10] 
+       \   /         \   /       \   /      |  
+      [27, 38]       [3, 43]     [9, 82]  [10]  
+        \             /             \        /
+          [3, 27, 38, 43]           [9, 10, 82]  
+                \                       /
+               [3, 9, 10, 27, 38, 43, 82]
+
+### Analysis:
+Time complexity: O(N log(N))
 Merge Sort is a recursive algorithm and through the recurrence relation the O(N log(N)) runtime is achieved. The recurrence relation is give by T(n) = 2T(n/2) + Ө(n) 
 
-####Space complexity: O(N)
+Space complexity: O(N)
 In the application of merge sort all the elements are copied into an auxiliary array. Therefore 'N' auxiliary space is required for any given array. Hence achieving O(N) runtime.
