@@ -1,4 +1,4 @@
-### Bubble Sort
+### BUBBLE SORT
 
 One of the rudimentary sorting algorithms in CS.
 
