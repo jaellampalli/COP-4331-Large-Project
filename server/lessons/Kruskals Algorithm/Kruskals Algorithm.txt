@@ -1,36 +1,132 @@
-### Sentinel Algorithm: An Innovative Anomaly Detection Solution
+### KRUSKAL’s ALGORITHM
+### How it works:
+Kruskal’s algorithm is a minimum spanning tree or also known as minimum weight spanning tree graphing algorithm. The kruskal’s algorithm starts by picking the minimum weighted edge at the first and then the maximum weighted edge at the very last. It keeps on adding the new edges and the nodes in the minimum spanning tree (MST) until the newly added edge does not form a cycle. Therefore, we are making a locally optimal choice in each step thus finding the optimal solution. Hence, the kruskal’s algorithm is also considered a greedy algorithm.
 
-If you're looking for an innovative anomaly detection solution that can help you identify potential threats and anomalies in your data, look no further than Sentinel. This cutting-edge algorithm uses a unique approach to anomaly detection that is both accurate and efficient.
+### How to implement Kruskal’s algorithm:
+Start by sorting all the edges in the non-decreasing order of their weight.
+Then pick the smallest edge, check if the picked smallest edge is forming a cycle or not. If a cycle is not formed then include that edge or else discard the edge and look for the next possible edge.
+Carry out the above steps until there are (V-1) edges in the spanning tree.
 
-### What is Sentinel?
+### Example #1:
+Let us consider the following graph:  
 
-Sentinel is an anomaly detection algorithm that uses machine learning techniques to identify potential threats and anomalies in data. This algorithm is designed to detect anomalies in real-time, making it an ideal solution for businesses that need to quickly identify and respond to potential threats.
+              8              7   
+           1 ---------- 2 ----------- 3
+          /|            |\            |\
+    4   /  |          2 |  \          |  \ 9
+      /    |            |    \        |    \
+    0      | 11         8      \ 4    | 14  4
+     \     |       /    |        \    |    /
+    8 \    |    /  7    | 6        \  |  / 10
+        \  | /          |            \ /
+        7 ---------- 6 -------------- 5
+               1            2
 
-#### Machine Learning Techniques
+Since the above graph has 9 edges, so the minimum spanning tree formed will be having (9-1) = 8 edges.
 
-The machine learning techniques used by Sentinel are one of the key reasons why it is so effective. By analyzing historical data and using it to identify patterns and trends, Sentinel is able to identify anomalies and potential threats in real-time.
+#### Step 1:
+Let us starting by picking the smallest edge from 7-6, no cycle is formed from it, so we include it.  
 
-### How Does Sentinel Work?
+                    1
+             7 --------- 6
 
-To use Sentinel, you simply feed your data into the algorithm and let it do its magic. Sentinel will automatically analyze the data and identify any potential anomalies or threats. You can then take action to address these anomalies and protect your data.
+#### Step 2:
+Now pick up the next smallest edge, 8-2. Since no cycle is formed by we include it.  
 
-#### Real-Time Anomaly Detection
+                      2
+                      |
+                      | 2
+                      |
+                      8
+                1     
+          7 --------- 6
 
-One of the key benefits of Sentinel is its ability to detect anomalies in real-time. This means that you can quickly identify and respond to potential threats, before they have a chance to do any damage.
+#### Step 3:
+Now pick up the next smallest edge, 6-5. Since no cycle is formed we include it in the cycle.  
 
-#### Customizable Thresholds
+                     2
+                     |
+                     | 2
+                     |
+                     8
+                     
+           1           2
+    7 --------- 6 --------- 5
 
-Sentinel also allows you to set customizable thresholds for anomaly detection. This means that you can adjust the sensitivity of the algorithm to match the specific needs of your business.
+#### Step 4:
+Now pick up the next smallest edge, 0-1. Since no cycle is formed we can include it.  
 
-### Why Choose Sentinel?
+                    1           2
+                  /             |
+               4 /              | 2
+                /               |
+              0                 8
 
-There are many reasons why you might choose Sentinel over other anomaly detection solutions. Here are just a few:
+                   1           2
+             7 --------- 6 --------- 5
 
-- **Accuracy**: Sentinel's machine learning techniques allow it to accurately identify potential threats and anomalies in real-time.
-- **Efficiency**: Sentinel is designed to detect anomalies quickly and efficiently, allowing you to respond to potential threats in real-time.
-- **Customizability**: Sentinel allows you to set customizable thresholds for anomaly detection, making it easy to adapt to the specific needs of your business.
-- **Ease of Use**: Sentinel is easy to use, even if you don't have a background in data science or machine learning.
+#### Step 5:
+Now picking the next smallest edge, 2-5. Since no cycle is formed we include it.  
 
-### Conclusion
+                         1           2
+                        /            |\
+                  4   /            2 | \
+                     /               |   \  4
+                    0                8    \   
+                                            \
+                      1          2           \
+                7 --------- 6 ---------------- 5
 
-If you're looking for an innovative anomaly detection solution that can help you identify potential threats and anomalies in your data, Sentinel is the way to go. With its machine learning techniques, real-time anomaly detection, and customizable thresholds, Sentinel is revolutionizing the field of anomaly detection. Try it out for yourself and see the results! 
+#### Step 6:
+Now picking up the next smallest edge, 8-6. If we include the edge 8-6, then it results in forming a cycle so we discard it. And by picking up the edge 2-3 no cycle is formed so we include it.  
+
+                                            7
+                           1           2 ------------ 3
+                          /            |\
+                     4   /           2 | \
+                       /               |   \  4
+                      0                8     \   
+                                                \
+                             1             2       \
+                       7 --------- 6 ---------------- 5
+
+#### Step 7:
+Picking up the edge 7-8 results in forming a cycle so we discard it and pick up the next edge which is 0-7.  
+
+                                             7
+                            1         2 ------------ 3
+                          /           | \
+                    4   /           2 |  \
+                       /              |   \  4
+                    0                 8     \   
+                       \                      \
+                       8  \                     \
+                            \                     \
+                              7 ------ 6 --------- 5
+                                   1         2
+
+#### Step 8:
+Picking up the edge 1-2 results in cycle being formed so we discard it and pick up the next edge which is 3-4.  
+
+                                                 7
+                                 1         2 ------------ 3
+                                /          | \             \
+                           4   /         2 |  \              \ 9
+                              /            |   \  4            \
+                           0               8     \               4
+                              \                     \
+                             8  \                     \
+                                  \                     \
+                                    7 ------ 6 --------- 5
+                                          1         2
+
+If we observe after step 8, the number of edges in the above obtained MST, equals to (V-1), so we can terminate the algorithm at this step.
+
+### Analysis:
+Time complexity: O(E * log V)
+The time complexity for the kruskal’s algorithm is O(E * logV) where ‘E’ is the number of edges and ‘V’ is the number of vertices. The sorting of the edges takes O(E * logE). After the iteration of the edges, we apply the find and union algorithm. The find and union algorithm takes up to O(logV). This results the overall complexity to be O(E * logE + E * logV). Since the value of E can also be O(V<sup>2</sup>) therefore the time complexity is O(E * logV).
+
+Space complexity: O(V + E)
+The space complexity for kruskal’s algorithm is O(V+E) where ‘V’ is the number of vertices and ‘E’ is the number of edges.
+
+            
