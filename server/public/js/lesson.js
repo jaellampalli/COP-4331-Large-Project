@@ -4,7 +4,7 @@ $(document).ready(function () {
     notes: "",
     mark: 0
   };
-  let email = null;
+  let email = localStorage.getItem("Login");
   let lesson = lessonName.replace(/\s/g, "").toLowerCase();
 
   // Load lesson content
@@ -171,10 +171,5 @@ $(document).ready(function () {
     })
   }
 
-    // add an event listener to run when a message is received
-  window.addEventListener("message", ({ data, source }) => {
-    console.log("Express recieved data: " + data);
-    email = data;
-    setup();
-  });
+  setup();
 });
