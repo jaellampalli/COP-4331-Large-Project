@@ -115,8 +115,10 @@ Queue:
 
 ### Analysis
 
-Time Complexity: O(V + E)
+Time Complexity: O(V + E)  
+
 The time complexity for BFS is O(V + E), where ‘V’ is the number of vertices and ‘E’ is the number of edges in the given graph. While performing the BFS, we visit each vertex only once and for a given vertex we visit all the unvisited vertices, therefore time taken to traverse is proportional to the sum of the number of the vertices and the edges.
 
-Space Complexity: O(V)
+Space Complexity: O(V)  
+
 The space complexity for BFS is O(V) where ‘V’ is the number of vertices in the given graph. While performing the BFS, we use a queue to store the vertices that we have visited but did not explore it neighboring vertices. Then we visit its adjacent vertices and add them to the end of the queue, we repeat this process until the queue becomes empty. Hence at any given point, the number of vertices in the queue will be equal to the number of vertices at the current level of the BFS tree.
