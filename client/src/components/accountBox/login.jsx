@@ -57,7 +57,7 @@ export function LoginForm(props) {
             if (result.message == "Invalid Credentials")
             {
                 // Add code to display error message here
-                resultMsg = 'Invalid credentials';
+                resultMsg = result.message;
                 return;
             }
 
