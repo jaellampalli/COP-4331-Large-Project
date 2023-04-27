@@ -1,36 +1,175 @@
-### Maelstrom: A High-Performance Algorithm for Large-Scale Data Analysis
+### QUICKSORT
+### How it works:
+Like Merge sort, quick sort is also a divide and conquer algorithm. The sorting in quick sort is carried through a partition algorithm by considering usually the first element as a pivot and then splitting the array as left and right partition. However, you can either choose the last, first, median or a random element as pivot.
 
-Are you struggling to analyze large and complex data sets? Look no further than Maelstrom, a high-performance algorithm designed for large-scale data analysis. With its unique approach to processing data, Maelstrom is revolutionizing the field of computer science.
+### Steps involved: 
+(Here example is solved by using the first element as the pivot)  
 
-### What is Maelstrom?
+1. Consider the first element as the pivot. (a[low])  
 
-Maelstrom is a distributed machine learning algorithm that is designed to work with large and complex data sets. Unlike traditional algorithms, which operate on a single machine, Maelstrom can be distributed across multiple machines, allowing it to process massive amounts of data with ease.
+2. Initialize the “i” to low index and “j” to high index  
+ 
+3. Repeat the following steps until i < j  
 
-#### Distributed Computing
+	1. Keep on incrementing “i” while a[i] <= pivot  
+	
+	2. Keep on decrementing “j” while a[j] >= pivot  
+	 
+	3. If (i < j) then swap (a[i], a[j])  
+	
+    iv. If (i > j) then swap (a[j], pivot)
 
-Maelstrom uses a technique called distributed computing to break up data sets into smaller chunks, which are processed simultaneously across multiple machines. This allows for faster processing times and more efficient use of computing resources.
+### Example #1:
+Let us consider the following array arr[ ] = {30, 20, 10, 50, 60, 40}  
 
-### How Does Maelstrom Work?
+#### 1<sup>st</sup> step:  
 
-To use Maelstrom, you simply feed your data into the algorithm and let it do its magic. Maelstrom will automatically distribute the data across multiple machines and use machine learning techniques to analyze the data and uncover insights.
+Considering the first element as pivot, a[0] = pivot  
 
-#### Scalability
+      -------------------------------
+      | 30 | 20 | 10 | 50 | 60 | 40 |
+      -------------------------------
 
-One of the key benefits of Maelstrom is its scalability. As your data sets grow in size, Maelstrom can scale to meet your needs, without sacrificing performance or accuracy.
+Considering the index position i = 0, j = 5 we can say that i < j.  
 
-#### Real-Time Processing
+(i)We keep on incrementing “i” while a[i] <= pivot  
 
-Maelstrom is designed to process data in real-time, allowing for faster and more efficient analysis of data. This is especially important in industries such as finance and healthcare, where real-time data analysis can make a significant impact.
+Starting from i = 0,  
 
-### Why Choose Maelstrom?
+	   a [0] < pivot (true)  i++ 
+		a[1] < pivot (true) i++ 
+		a[2] < pivot (true) i++
+		a[3] < pivot (false) terminate (terminated at i = 3)
 
-There are many reasons why you might choose Maelstrom over other machine learning algorithms. Here are just a few:
+(ii)We keep on decrementing “j” while a[j] >= pivot  
 
-- **Scalability**: Maelstrom can handle even the largest and most complex data sets, making it a great choice for big data applications.
-- **Efficiency**: Maelstrom's distributed computing approach allows for faster processing times and more efficient use of computing resources.
-- **Real-Time Processing**: Maelstrom can process data in real-time, allowing for faster and more efficient analysis of data.
-- **Accuracy**: Maelstrom uses machine learning techniques to uncover insights and patterns in your data, resulting in more accurate predictions and better decision-making.
+Starting from j = 5,  
 
-### Conclusion
+		a[5] > pivot (true) j-- 
+		a [4] > pivot (true) j-- 
+		a [3] > pivot (true) j-- 
+		a[2] > pivot (false) terminate (terminated at j = 2)
 
-If you're struggling to analyze large and complex data sets, Maelstrom is the solution you've been looking for. With its unique approach to distributed computing and real-time processing, Maelstrom is revolutionizing the field of data analysis and opening up new possibilities for industries such as finance, healthcare, and more. Give it a try and see the results for yourself! 
+(iii)Since, (i > j) we swap (a[j], pivot)  
+
+Final array after step 1:  
+
+      --------------------------------
+      |  10 | 20 | 30 | 50 | 60 | 40 |
+      ---------------------------------
+
+#### 2<sup>nd</sup> step:  
+
+Considering “30” as the pivot, now the array can be divided into left and right partition respectively.  
+
+Considering the elements in the left partition to be 10, 20.  
+
+Considering the elements in the right partition to be 50, 60, 40.  
+
+
+Solving the left partition:  
+
+    -----------
+    | 10 | 20 |
+    -----------
+
+Now considering the pivot as the first element of the array, therefore pivot = 10  
+
+(i)We keep on incrementing “i” while a[i] <= pivot  
+
+Starting from i = 0,  
+
+		a[0] <= pivot (true) i++
+		a[1] < pivot (false) terminate (terminated at i = 1)
+(ii)We keep on decrementing “j” while a[j] >= pivot  
+
+Starting from j = 1,  
+
+    a[1]  >= pivot (true) j-- 
+    a[0] > pivot (false) terminate (terminated at j = 0)
+
+(iii)Since, (i > j) we swap (a[j], pivot)  
+
+Final array after step 2:  
+
+    -----------
+    | 10 | 20 |
+    -----------
+
+#### 3<sup>rd</sup> step:  
+
+Now considering the right partition, let us sort the elements in the right partition:  
+
+    ----------------
+    | 50 | 60 | 40 |
+    ----------------
+
+Now considering the pivot as the first element of the array, therefore pivot = 50  
+
+(i)We keep on incrementing “i” while a[i] <= pivot  
+
+Starting from i = 0,  
+
+		a[0] <= pivot (true) i++
+		a[1] < pivot (false) terminate (terminated at i = 1)
+(ii)We keep on decrementing “j” while a[j] >= pivot  
+
+Starting from j = 2,  
+
+		a[2] > pivot (false) terminated (terminated at j = 2) 
+(iii)Since, (i <  j) we swap (a[i], a[j])  
+
+      ----------------
+      | 50 | 40 | 60 |
+      ----------------
+
+#### 4<sup>th</sup> step:  
+ 
+Considering the above array, let us consider the pivot to be first element, therefore pivot = 50  
+
+    ----------------
+    | 50 | 40 | 60 |
+    ----------------
+
+(i)We keep on incrementing “i” while a[i] <= pivot  
+
+Starting from i = 0,  
+
+	a[0] <= pivot (true) i++
+	a[1] < pivot (true) i++
+	a[2] < pivot (false) terminated (terminated at i = 2)
+(ii)We keep on decrementing “j” while a[j] >= pivot  
+
+Starting from j = 2,  
+
+		a[2] >= pivot (true) j- -  
+		a[1] > pivot (false) terminated (terminated at j = 1)
+(iii)Since, (i >  j) we swap (a[j], pivot)  
+
+Array after swapping:  
+
+    ----------------
+    | 40 | 50 | 60 |
+    ----------------
+
+Now considering the above array, and considering “50” as pivot the array can be further splitted into left and right partition, but since the left and right partitioned array contains only one element, therefore the left and right array is sorted.  
+
+
+Therefore the final sorted array is:  
+
+    -------------------------------
+    | 10 | 20 | 30 | 40 | 50 | 60 |
+    -------------------------------
+
+### Analysis:  
+
+Time Complexity:O(N logN), O(N<sup>2</sup>)  
+
+The best case runtime for quick sort is O(N logN) and the worst case runtime is O(N<sup>2</sup>). In the best case, the quick sort algorithm divides the array into further subarrays using the pivot element and then recursively sorts these subarrays. Hence resulting in overall time complexity as O(N logN) where “N” is the number of elements. In the worst case, the quick sort algorithm can take up to O(N2) because if the selected pivot is the lowest or the highest number of the array then it results into unbalanced partitions and recursive calls.
+
+Space complexity:O(logN), O(N)  
+
+The best case runtime for quick sort is O(logN) and the worst case is O(N). During the recursive calls of the stacks, the maximum depth of the call is logN because each partition reduces the size of the subarrays by half.
+
+
+
