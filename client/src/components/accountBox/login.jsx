@@ -6,7 +6,8 @@ import { BoxContainer,
     AltPrompt,
     ColorLink,
     SubmitButton,
-    ErrorMessage} from "./common";
+    ErrorMessage,
+    ResultMessage } from "./common";
 import { AccountContext } from "./accountContext";
 
 export function LoginForm(props) {
@@ -56,7 +57,7 @@ export function LoginForm(props) {
             if (result.message == "Invalid Credentials")
             {
                 // Add code to display error message here
-                resultMsg = result.message;
+                resultMsg = 'Invalid credentials';
                 return;
             }
 
@@ -73,7 +74,7 @@ export function LoginForm(props) {
     }
 
     return (<BoxContainer>
-        <ErrorMessage>{resultMsg}</ErrorMessage>
+        <ResultMessage>{resultMsg}</ResultMessage>
         <FormContainer>
             <Input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email" />
             <Input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password" />

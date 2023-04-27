@@ -21,6 +21,13 @@ export const Label = styled.label`
   text-align: left;
 `;
 
+export const ResultMessage = styled.span`
+  font-size: 11px;
+  color: #2cb2ff;
+  text-align: center;
+  margin-bottom: 5px;
+`;
+
 export const ErrorMessage = styled.span`
   font-size: 11px;
   color: red;
