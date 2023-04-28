@@ -164,4 +164,8 @@ html {
   resize: none;
 }
 
+.hide-search-input {
+  display: none;
+}
+
 

@@ -13,6 +13,16 @@ $(document).ready(function () {
     $('#lessonContent').html(data);
   });
 
+  $('#logoutButton').click(function (e) {
+    e.preventDefault(); // Prevent form submission
+    localStorage.clear(); // Remove all local storage
+    window.location.href = '/'; // Redirect the user to the home page
+  });
+
+  if (window.location.pathname === '/home') {
+    $('#searchInput').removeClass('hide-search-input');
+  }  
+
   // Handle edit button click
   $('#editButton').click(function () {
     $('#lessonContent').hide();
@@ -70,8 +80,7 @@ $(document).ready(function () {
     }
   });
   
-  function updateNotes(newNotes)
-  {
+  function updateNotes(newNotes) {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
