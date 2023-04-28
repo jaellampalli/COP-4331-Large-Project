@@ -22,7 +22,7 @@ Like Merge sort, quick sort is also a divide and conquer algorithm. The sorting 
 ### Example #1:
 Let us consider the following array arr[ ] = {30, 20, 10, 50, 60, 40}  
 
-#### 1<sup>st</sup> step:  
+#### 1st step:  
 
 Considering the first element as pivot, a[0] = pivot  
 
@@ -58,7 +58,7 @@ Final array after step 1:
       |  10 | 20 | 30 | 50 | 60 | 40 |
       ---------------------------------
 
-#### 2<sup>nd</sup> step:  
+#### 2nd step:  
 
 Considering “30” as the pivot, now the array can be divided into left and right partition respectively.  
 
@@ -96,7 +96,7 @@ Final array after step 2:
     | 10 | 20 |
     -----------
 
-#### 3<sup>rd</sup> step:  
+#### 3rd step:  
 
 Now considering the right partition, let us sort the elements in the right partition:  
 
@@ -123,7 +123,7 @@ Starting from j = 2,
       | 50 | 40 | 60 |
       ----------------
 
-#### 4<sup>th</sup> step:  
+#### 4th step:  
  
 Considering the above array, let us consider the pivot to be first element, therefore pivot = 50  
 
