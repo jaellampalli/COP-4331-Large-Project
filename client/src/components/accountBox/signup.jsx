@@ -4,7 +4,8 @@ import { BoxContainer,
     AltPrompt,
     ColorLink,
     SubmitButton,
-    ErrorMessage } from "./common";
+    ErrorMessage, 
+    ResultMessage} from "./common";
 import { AccountContext } from "./accountContext";
 import { useContext, useState } from 'react';
 import FormInput from "./signupInputs";
@@ -119,7 +120,7 @@ export function SignupForm(props) {
 
     return (
         <BoxContainer>
-            <ErrorMessage>{resultMsg}</ErrorMessage>
+            <ResultMessage>{resultMsg}</ResultMessage>
             <FormContainer onSubmit={handleSubmit}>
                 {inputs.map((input) =>(
                     <FormInput key={input.id} 
