@@ -52,11 +52,6 @@ app.post('/search', async (req, res) => {
   const lessonName = req.body.lessonName.replace(/\s+/g, '-');
   res.redirect('/' + lessonName);
 });
- 
-app.get('/api/logout', (req, res) => {
-  // Perform any server-side logout actions, like destroying the session
-  res.redirect('/'); // Redirect the user to the home page
-});
 
 app.get('/:lessonName', async (req, res) => {
   const lessonName = req.params.lessonName;
