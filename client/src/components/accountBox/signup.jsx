@@ -95,7 +95,7 @@ export function SignupForm(props) {
         .then(result => {
             result = JSON.parse(result);
             console.log(result)
-            if (result.message == "Email is already in use")
+            if (result.message == "Email is already in use.")
             {
                 setResultMsg("Email is already in use");
                 return;
