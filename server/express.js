@@ -53,7 +53,7 @@ app.post('/search', async (req, res) => {
   res.redirect('/' + lessonName);
 });
  
-app.get('/logout', (req, res) => {
+app.get('/api/logout', (req, res) => {
   // Perform any server-side logout actions, like destroying the session
   res.redirect('/'); // Redirect the user to the home page
 });
