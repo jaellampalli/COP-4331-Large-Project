@@ -53,7 +53,7 @@ app.post('/search', async (req, res) => {
   res.redirect('/' + lessonName);
 });
 
-app.post('/api/logout', (req, res) => {
+app.get('/api/logout', (req, res) => {
   res.redirect('/'); // Redirect the user to the home page
 });
 
