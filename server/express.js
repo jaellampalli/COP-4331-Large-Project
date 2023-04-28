@@ -53,6 +53,10 @@ app.post('/search', async (req, res) => {
   res.redirect('/' + lessonName);
 });
 
+app.post('/api/logout', (req, res) => {
+  res.redirect('/'); // Redirect the user to the home page
+});
+
 app.get('/:lessonName', async (req, res) => {
   const lessonName = req.params.lessonName;
   const lessonPath = path.join(__dirname, 'lessons', lessonName);

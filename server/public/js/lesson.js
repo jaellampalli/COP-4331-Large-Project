@@ -13,10 +13,9 @@ $(document).ready(function () {
     $('#lessonContent').html(data);
   });
 
-  function handleLogout() {
+  $('#logoutLink').on('click', function (e) {
     localStorage.clear(); // Remove all local storage
-    window.location.href = '/'; // Redirect the user to the home page
-  }
+  });  
   
   if (window.location.pathname === '/home') {
     $('#searchInput').removeClass('hide-search-input');
