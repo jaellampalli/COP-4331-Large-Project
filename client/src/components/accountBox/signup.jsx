@@ -3,14 +3,18 @@ import { BoxContainer,
     FormContainer,
     AltPrompt,
     ColorLink,
-    SubmitButton } from "./common";
+    SubmitButton,
+    ErrorMessage } from "./common";
 import { AccountContext } from "./accountContext";
 import { useContext, useState } from 'react';
 import FormInput from "./signupInputs";
 
 export function SignupForm(props) {
+
     // used to switch screens
     const { switchToLogin } = useContext(AccountContext);
+
+    const [resultMsg, setResultMsg] = useState('');
 
     // values to get from user
     const [values, setValues] = useState({
@@ -91,9 +95,12 @@ export function SignupForm(props) {
         .then(result => {
             result = JSON.parse(result);
             console.log(result)
-            if (result.error)
+            if (result.message == "Email is already in use")
             {
+                setResultMsg("Email is already in use");
                 return;
+            } else {
+                setResultMsg("Success, please login");
             }
             
         })
@@ -112,6 +119,7 @@ export function SignupForm(props) {
 
     return (
         <BoxContainer>
+            <ErrorMessage>{resultMsg}</ErrorMessage>
             <FormContainer onSubmit={handleSubmit}>
                 {inputs.map((input) =>(
                     <FormInput key={input.id} 

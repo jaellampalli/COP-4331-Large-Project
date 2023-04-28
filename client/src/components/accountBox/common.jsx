@@ -23,8 +23,8 @@ export const Label = styled.label`
 
 export const ResultMessage = styled.span`
   font-size: 11px;
-  color: #2cb2ff;
-  text-align: center;
+  color: red;
+  text-align: left;
   margin-bottom: 5px;
 `;
 
