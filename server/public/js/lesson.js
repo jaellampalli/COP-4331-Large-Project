@@ -13,12 +13,10 @@ $(document).ready(function () {
     $('#lessonContent').html(data);
   });
 
-  $('#logoutButton').click(function (e) {
-    e.preventDefault(); // Prevent form submission
+  $('#logoutForm').on('submit', function (e) {
     localStorage.clear(); // Remove all local storage
-    window.location.href = '/'; // Redirect the user to the home page
   });
-
+  
   if (window.location.pathname === '/home') {
     $('#searchInput').removeClass('hide-search-input');
   }  
