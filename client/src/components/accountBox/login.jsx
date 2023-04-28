@@ -11,10 +11,10 @@ import { BoxContainer,
 import { AccountContext } from "./accountContext";
 
 export function LoginForm(props) {
-    let resultMsg = '';
-
+    
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [resultMsg, setResultMsg] = useState('');
     
     const { switchToSignup } = useContext(AccountContext);
 
@@ -57,7 +57,7 @@ export function LoginForm(props) {
             if (result.message == "Invalid Credentials")
             {
                 // Add code to display error message here
-                resultMsg = result.message;
+                setResultMsg("Invalid credentials");
                 return;
             }
 
